@@ -48,16 +48,6 @@
         /// <summary>
         /// 过期时间（分钟）
         /// </summary>
-        public long? ExpiredTime { get; set; }
-
-        /// <summary>
-        /// 加密算法
-        /// </summary>
-        public string Algorithm { get; set; }
-
-        /// <summary>
-        /// 验证过期时间，设置 false 永不过期
-        /// </summary>
-        public bool RequireExpirationTime { get; set; } = true;
+        public int? ExpiredTime { get; set; }
     }
 }

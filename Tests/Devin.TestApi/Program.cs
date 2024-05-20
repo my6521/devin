@@ -15,7 +15,9 @@ namespace Devin.TestApi
             //版本号管理
             builder.Services.AddApiVersion();
             //添加文档
-            builder.Services.AddSwaggerDocuments(x => builder.Configuration.GetSection(x.GetType().Name).Bind(x));
+            builder.Services.AddSwaggerDocuments(x => builder.Configuration.GetSection("Swagger").Bind(x));
+            //添加JWT授权
+            builder.Services.AddJwt(x => builder.Configuration.GetSection("JWT").Bind(x));
 
             var app = builder.Build();
 

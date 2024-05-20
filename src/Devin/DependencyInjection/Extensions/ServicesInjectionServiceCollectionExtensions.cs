@@ -12,6 +12,12 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class ServicesInjectionServiceCollectionExtensions
     {
+        /// <summary>
+        /// 注入所有服务
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="assemblies"></param>
+        /// <returns></returns>
         public static IServiceCollection RegisterServicesFromAssembly(this IServiceCollection services, params Assembly[] assemblies)
         {
             if (assemblies.Length == 0)
