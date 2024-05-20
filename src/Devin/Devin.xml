@@ -1,0 +1,1143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Devin</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ServicesInjectionServiceCollectionExtensions">
+            <summary>
+            依赖注入拓展类
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ObjectMapperServiceCollectionExtensions">
+            <summary>
+            对象映射拓展类
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ObjectMapperServiceCollectionExtensions.AddObjectMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])">
+            <summary>
+            添加对象映射
+            </summary>
+            <param name="services">服务集合</param>
+            <param name="assemblies">扫描的程序集</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.OptionsInjectionServiceExtensions">
+            <summary>
+            配置注册拓展类
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.Hosting.IHostExtensions">
+            <summary>
+            IHost 主机拓展类
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.IHostExtensions.GetServerAddresses(Microsoft.Extensions.Hosting.IHost)">
+            <summary>
+            获取主机启动地址
+            </summary>
+            <param name="host"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.IHostExtensions.GetServerAddress(Microsoft.Extensions.Hosting.IHost)">
+            <summary>
+            获取主机启动地址
+            </summary>
+            <param name="host"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.IHostExtensions.GetServerAddresses(Microsoft.AspNetCore.Hosting.Server.IServer)">
+            <summary>
+            获取主机启动地址
+            </summary>
+            <param name="server"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Hosting.IHostExtensions.GetServerAddress(Microsoft.AspNetCore.Hosting.Server.IServer)">
+            <summary>
+            获取主机启动地址
+            </summary>
+            <param name="server"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.GetMetadata``1(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取 Action 特性
+            </summary>
+            <typeparam name="TAttribute"></typeparam>
+            <param name="httpContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.GetControllerActionDescriptor(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取 控制器/Action 描述器
+            </summary>
+            <param name="httpContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.SigninToSwagger(Microsoft.AspNetCore.Http.HttpContext,System.String)">
+            <summary>
+            设置规范化文档自动登录
+            </summary>
+            <param name="httpContext"></param>
+            <param name="accessToken"></param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.SignoutToSwagger(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            设置规范化文档退出登录
+            </summary>
+            <param name="httpContext"></param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.SetTokensOfResponseHeaders(Microsoft.AspNetCore.Http.HttpContext,System.String,System.String)">
+            <summary>
+            设置响应头 Tokens
+            </summary>
+            <param name="httpContext"></param>
+            <param name="accessToken"></param>
+            <param name="refreshToken"></param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.GetLocalIpAddressToIPv4(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取本机 IPv4地址
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.GetLocalIpAddressToIPv6(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取本机 IPv6地址
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.GetRemoteIpAddressToIPv4(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取远程 IPv4地址
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.GetRemoteIpAddressToIPv6(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取远程 IPv6地址
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.GetRequestUrlAddress(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            获取完整请求地址
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.GetRefererUrlAddress(Microsoft.AspNetCore.Http.HttpRequest,System.String)">
+            <summary>
+            获取来源地址
+            </summary>
+            <param name="request"></param>
+            <param name="refererHeaderKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.ReadBodyContentAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            读取 Body 内容
+            </summary>
+            <param name="httpContext"></param>
+            <remarks>需先在 Startup 的 Configure 中注册 app.EnableBuffering()</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.ReadBodyContentAsync(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            读取 Body 内容
+            </summary>
+            <param name="request"></param>
+            <remarks>需先在 Startup 的 Configure 中注册 app.EnableBuffering()</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Http.HttpContextExtensions.IsWebSocketRequest(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            判断是否是 WebSocket 请求
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.ResponseWrapperApplicationBuilderExtensions">
+            <summary>
+            统一返回格式
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.ResponseWrapperApplicationBuilderExtensions.UseResponseWrapper(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            统一返回格式
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.AESEncryption.Encrypt(System.String,System.String,System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密
+            </summary>
+            <param name="text">加密文本</param>
+            <param name="skey">密钥</param>
+            <param name="iv">偏移量</param>
+            <param name="mode">模式</param>
+            <param name="padding">填充</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.AESEncryption.Decrypt(System.String,System.String,System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密
+            </summary>
+            <param name="hash">加密后字符串</param>
+            <param name="skey">密钥</param>
+            <param name="iv">偏移量</param>
+            <param name="mode">模式</param>
+            <param name="padding">填充</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.AESEncryption.Encrypt(System.Byte[],System.String,System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密
+            </summary>
+            <param name="bytes">源文件 字节数组</param>
+            <param name="skey">密钥</param>
+            <param name="iv">偏移量</param>
+            <param name="mode">模式</param>
+            <param name="padding">填充</param>
+            <returns>加密后的字节数组</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.AESEncryption.Decrypt(System.Byte[],System.String,System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密
+            </summary>
+            <param name="bytes">加密后文件 字节数组</param>
+            <param name="skey">密钥</param>
+            <param name="iv">偏移量</param>
+            <param name="mode">模式</param>
+            <param name="padding">填充</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.DESEncryption.Encrypt(System.String,System.String,System.Boolean)">
+            <summary>
+            加密
+            </summary>
+            <param name="text">加密文本</param>
+            <param name="skey">密钥</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.DESEncryption.Decrypt(System.String,System.String,System.Boolean)">
+            <summary>
+            解密
+            </summary>
+            <param name="hash">加密后字符串</param>
+            <param name="skey">密钥</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.MD5Encryption.Compare(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            MD5 比较
+            </summary>
+            <param name="text">加密文本</param>
+            <param name="hash">MD5 字符串</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <param name="is16">是否输出 16 位</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.MD5Encryption.Encrypt(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            MD5 加密
+            </summary>
+            <param name="text">加密文本</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <param name="is16">是否输出 16 位</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.MD5Encryption.Encrypt(System.Byte[],System.Boolean,System.Boolean)">
+            <summary>
+            MD5 加密
+            </summary>
+            <param name="bytes">字节数组</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <param name="is16">是否输出 16 位</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.MD5Encryption.Compare(System.Byte[],System.String,System.Boolean,System.Boolean)">
+            <summary>
+            MD5 比较
+            </summary>
+            <param name="bytes">字节数组</param>
+            <param name="hash">MD5 字符串</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <param name="is16">是否输出 16 位</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.RSAEncryption.GenerateSecretKey(System.Int32)">
+            <summary>
+            生成 RSA 秘钥
+            </summary>
+            <param name="keySize">大小必须为 2048 到 16384 之间，且必须能被 8 整除</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.RSAEncryption.Encrypt(System.String,System.String,System.Int32)">
+            <summary>
+            加密
+            </summary>
+            <param name="text">明文内容</param>
+            <param name="publicKey">公钥</param>
+            <param name="keySize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.RSAEncryption.Decrypt(System.String,System.String,System.Int32)">
+            <summary>
+            解密
+            </summary>
+            <param name="text">密文内容</param>
+            <param name="privateKey">私钥</param>
+            <param name="keySize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.RSAEncryption.CheckRSAKeySize(System.Int32)">
+            <summary>
+            检查 RSA 长度
+            </summary>
+            <param name="keySize"></param>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.SHA1Encryption.Encrypt(System.String,System.Boolean)">
+            <summary>
+            SHA1 加密
+            </summary>
+            <param name="text">加密文本</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.SHA1Encryption.Compare(System.String,System.String,System.Boolean)">
+            <summary>
+            MD5 比较
+            </summary>
+            <param name="text">加密文本</param>
+            <param name="hash">SHA1 字符串</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.SHA1Encryption.Encrypt(System.Byte[],System.Boolean)">
+            <summary>
+            SHA1 加密
+            </summary>
+            <param name="bytes">字节数组</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Encryptions.SHA1Encryption.Compare(System.Byte[],System.String,System.Boolean)">
+            <summary>
+            SHA1 比较
+            </summary>
+            <param name="bytes">字节数组</param>
+            <param name="hash">SHA1 字符串</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns>bool</returns>
+        </member>
+        <member name="T:Devin.DataEncryption.Extensions.StringEncryptionExtensions">
+            <summary>
+            DataEncryption 字符串加密拓展
+            </summary>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToMD5Encrypt(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            字符串的 MD5 加密
+            </summary>
+            <param name="text"></param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <param name="is16">是否输出 16 位</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToMD5Compare(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            字符串的 MD5 对比
+            </summary>
+            <param name="text"></param>
+            <param name="hash"></param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <param name="is16">是否输出 16 位</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToMD5Encrypt(System.Byte[],System.Boolean,System.Boolean)">
+            <summary>
+            字节数组的 MD5 加密
+            </summary>
+            <param name="bytes"></param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <param name="is16">是否输出 16 位</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToMD5Compare(System.Byte[],System.String,System.Boolean,System.Boolean)">
+            <summary>
+            字节数组的 MD5 对比
+            </summary>
+            <param name="bytes"></param>
+            <param name="hash"></param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <param name="is16">是否输出 16 位</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToAESEncrypt(System.String,System.String,System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            字符串 AES 加密
+            </summary>
+            <param name="text">加密文本</param>
+            <param name="skey">密钥</param>
+            <param name="iv">偏移量</param>
+            <param name="mode">模式</param>
+            <param name="padding">填充</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToAESDecrypt(System.String,System.String,System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            字符串 AES 解密
+            </summary>
+            <param name="text">加密文本</param>
+            <param name="skey">密钥</param>
+            <param name="iv">偏移量</param>
+            <param name="mode">模式</param>
+            <param name="padding">填充</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToAESEncrypt(System.Byte[],System.String,System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            字节数组（文件） AES 加密
+            </summary>
+            <param name="bytes">源文件 字节数组</param>
+            <param name="skey">密钥</param>
+            <param name="iv">偏移量</param>
+            <param name="mode">模式</param>
+            <param name="padding">填充</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToAESDecrypt(System.Byte[],System.String,System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            字节数组（文件） AES 解密
+            </summary>
+            <param name="bytes">加密后文件 字节数组</param>
+            <param name="skey">密钥</param>
+            <param name="iv">偏移量</param>
+            <param name="mode">模式</param>
+            <param name="padding">填充</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToDESEncrypt(System.String,System.String,System.Boolean)">
+            <summary>
+            字符串 DES 加密
+            </summary>
+            <param name="text">需要加密的字符串</param>
+            <param name="skey">密钥</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToDESDecrypt(System.String,System.String,System.Boolean)">
+            <summary>
+            字符串 DES 解密
+            </summary>
+            <param name="text"></param>
+            <param name="skey">密钥</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToRSAEncrpyt(System.String,System.String)">
+            <summary>
+            字符串 RSA 加密
+            </summary>
+            <param name="text">需要加密的文本</param>
+            <param name="publicKey">公钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToRSADecrypt(System.String,System.String)">
+            <summary>
+            字符串 RSA 解密
+            </summary>
+            <param name="text">需要解密的文本</param>
+            <param name="privateKey">私钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToSHA1Encrypt(System.String,System.Boolean)">
+            <summary>
+            字符串 SHA1 加密
+            </summary>
+            <param name="text">需要加密的文本</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToSHA1Encrypt(System.Byte[],System.Boolean)">
+            <summary>
+            字节数组的 SHA1 加密
+            </summary>
+            <param name="bytes">字节数组</param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToSHA1Compare(System.String,System.String,System.Boolean)">
+            <summary>
+            字符串的 SHA1 对比
+            </summary>
+            <param name="text"></param>
+            <param name="hash"></param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Devin.DataEncryption.Extensions.StringEncryptionExtensions.ToSHA1Compare(System.Byte[],System.String,System.Boolean)">
+            <summary>
+            字节数组的 SHA1 对比
+            </summary>
+            <param name="bytes"></param>
+            <param name="hash"></param>
+            <param name="uppercase">是否输出大写加密，默认 false</param>
+            <returns>string</returns>
+        </member>
+        <member name="T:Devin.DependencyInjection.Attributes.ServiceInjectionActions">
+            <summary>
+            服务注册方式
+            </summary>
+        </member>
+        <member name="F:Devin.DependencyInjection.Attributes.ServiceInjectionActions.Add">
+            <summary>
+            如果存在则覆盖
+            </summary>
+        </member>
+        <member name="F:Devin.DependencyInjection.Attributes.ServiceInjectionActions.TryAdd">
+            <summary>
+            如果存在则跳过，默认方式
+            </summary>
+        </member>
+        <member name="T:Devin.DependencyInjection.Attributes.ServiceInjectionAttribute">
+            <summary>
+            注册标注
+            </summary>
+        </member>
+        <member name="P:Devin.DependencyInjection.Attributes.ServiceInjectionAttribute.Pattern">
+            <summary>
+            注册选项
+            </summary>
+        </member>
+        <member name="P:Devin.DependencyInjection.Attributes.ServiceInjectionAttribute.Action">
+            <summary>
+            添加服务方式，存在不添加，或继续添加
+            </summary>
+        </member>
+        <member name="T:Devin.DependencyInjection.Attributes.ServiceInjectionPatterns">
+            <summary>
+            注册范围
+            </summary>
+        </member>
+        <member name="F:Devin.DependencyInjection.Attributes.ServiceInjectionPatterns.Self">
+            <summary>
+            只注册自己
+            </summary>
+        </member>
+        <member name="F:Devin.DependencyInjection.Attributes.ServiceInjectionPatterns.FirstInterface">
+            <summary>
+            第一个接口
+            </summary>
+        </member>
+        <member name="F:Devin.DependencyInjection.Attributes.ServiceInjectionPatterns.SelfWithFirstInterface">
+            <summary>
+            自己和第一个接口，默认值
+            </summary>
+        </member>
+        <member name="F:Devin.DependencyInjection.Attributes.ServiceInjectionPatterns.ImplementedInterfaces">
+            <summary>
+            所有接口
+            </summary>
+        </member>
+        <member name="F:Devin.DependencyInjection.Attributes.ServiceInjectionPatterns.All">
+            <summary>
+            注册自己包括所有接口
+            </summary>
+        </member>
+        <member name="T:Devin.FriendlyException.AppFriendlyException">
+            <summary>
+            友好异常类
+            </summary>
+        </member>
+        <member name="M:Devin.FriendlyException.AppFriendlyException.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Devin.FriendlyException.AppFriendlyException.#ctor(System.String,System.Object)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="message"></param>
+            <param name="errorCode"></param>
+        </member>
+        <member name="M:Devin.FriendlyException.AppFriendlyException.#ctor(System.String,System.Object,System.Exception)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="message"></param>
+            <param name="errorCode"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:Devin.FriendlyException.AppFriendlyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="P:Devin.FriendlyException.AppFriendlyException.ErrorCode">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:Devin.FriendlyException.AppFriendlyException.OriginErrorCode">
+            <summary>
+            错误码（没被复写过的 ErrorCode ）
+            </summary>
+        </member>
+        <member name="P:Devin.FriendlyException.AppFriendlyException.ErrorMessage">
+            <summary>
+            错误消息（支持 Object 对象）
+            </summary>
+        </member>
+        <member name="P:Devin.FriendlyException.AppFriendlyException.StatusCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Devin.FriendlyException.AppFriendlyException.ValidationException">
+            <summary>
+            是否是数据验证异常
+            </summary>
+        </member>
+        <member name="P:Devin.FriendlyException.AppFriendlyException.Data">
+            <summary>
+            额外数据
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.IdGeneratorOptions.Method">
+            <summary>
+            雪花计算方法
+            （1-漂移算法|2-传统算法），默认1
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.IdGeneratorOptions.BaseTime">
+            <summary>
+            基础时间（UTC格式）
+            不能超过当前系统时间
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.IdGeneratorOptions.WorkerId">
+            <summary>
+            机器码
+            必须由外部设定，最大值 2^WorkerIdBitLength-1
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.IdGeneratorOptions.WorkerIdBitLength">
+            <summary>
+            机器码位长
+            默认值6，取值范围 [1, 15]（要求：序列数位长+机器码位长不超过22）
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.IdGeneratorOptions.SeqBitLength">
+            <summary>
+            序列数位长
+            默认值6，取值范围 [3, 21]（要求：序列数位长+机器码位长不超过22）
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.IdGeneratorOptions.MaxSeqNumber">
+            <summary>
+            最大序列数（含）
+            设置范围 [MinSeqNumber, 2^SeqBitLength-1]，默认值0，表示最大序列数取最大值（2^SeqBitLength-1]）
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.IdGeneratorOptions.MinSeqNumber">
+            <summary>
+            最小序列数（含）
+            默认值5，取值范围 [5, MaxSeqNumber]，每毫秒的前5个序列数对应编号0-4是保留位，其中1-4是时间回拨相应预留位，0是手工新值预留位
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.IdGeneratorOptions.TopOverCostCount">
+            <summary>
+            最大漂移次数（含），
+            默认2000，推荐范围500-10000（与计算能力有关）
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.IdGeneratorOptions.DataCenterId">
+            <summary>
+            数据中心ID（默认0）
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.IdGeneratorOptions.DataCenterIdBitLength">
+            <summary>
+            数据中心ID长度（默认0）
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.IdGeneratorOptions.TimestampType">
+            <summary>
+            时间戳类型（0-毫秒，1-秒），默认0
+            </summary>
+        </member>
+        <member name="M:Devin.IDGenerator.IIdGenerator.NewLong">
+            <summary>
+            生成新的long型Id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Devin.IDGenerator.OverCostActionArg">
+            <summary>
+            Id生成时回调参数
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.OverCostActionArg.ActionType">
+            <summary>
+            事件类型
+            1-开始，2-结束，8-漂移
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.OverCostActionArg.TimeTick">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.OverCostActionArg.WorkerId">
+            <summary>
+            机器码
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.OverCostActionArg.OverCostCountInOneTerm">
+            <summary>
+            漂移计算次数
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.OverCostActionArg.GenCountInOneTerm">
+            <summary>
+            漂移期间生产ID个数
+            </summary>
+        </member>
+        <member name="P:Devin.IDGenerator.OverCostActionArg.TermIndex">
+            <summary>
+            漂移周期
+            </summary>
+        </member>
+        <member name="T:Devin.IDGenerator.SnowWorkerM1">
+            <summary>
+            雪花漂移算法
+            </summary>
+        </member>
+        <member name="F:Devin.IDGenerator.SnowWorkerM1.BaseTime">
+            <summary>
+            基础时间
+            </summary>
+        </member>
+        <member name="F:Devin.IDGenerator.SnowWorkerM1.WorkerId">
+            <summary>
+            机器码
+            </summary>
+        </member>
+        <member name="F:Devin.IDGenerator.SnowWorkerM1.WorkerIdBitLength">
+            <summary>
+            机器码位长
+            </summary>
+        </member>
+        <member name="F:Devin.IDGenerator.SnowWorkerM1.SeqBitLength">
+            <summary>
+            自增序列数位长
+            </summary>
+        </member>
+        <member name="F:Devin.IDGenerator.SnowWorkerM1.MaxSeqNumber">
+            <summary>
+            最大序列数（含）
+            </summary>
+        </member>
+        <member name="F:Devin.IDGenerator.SnowWorkerM1.MinSeqNumber">
+            <summary>
+            最小序列数（含）
+            </summary>
+        </member>
+        <member name="F:Devin.IDGenerator.SnowWorkerM1.TopOverCostCount">
+            <summary>
+            最大漂移次数（含）
+            </summary>
+        </member>
+        <member name="T:Devin.IDGenerator.SnowWorkerM2">
+            <summary>
+            常规雪花算法
+            </summary>
+        </member>
+        <member name="T:Devin.IDGenerator.SnowWorkerM3">
+            <summary>
+            雪花漂移算法（支持数据中心ID和秒级时间戳）
+            </summary>
+        </member>
+        <member name="F:Devin.IDGenerator.SnowWorkerM3.DataCenterId">
+            <summary>
+            数据中心ID（默认0）
+            </summary>
+        </member>
+        <member name="F:Devin.IDGenerator.SnowWorkerM3.DataCenterIdBitLength">
+            <summary>
+            数据中心ID长度（默认0）
+            </summary>
+        </member>
+        <member name="F:Devin.IDGenerator.SnowWorkerM3.TimestampType">
+            <summary>
+            时间戳类型（0-毫秒，1-秒），默认0
+            </summary>
+        </member>
+        <member name="T:Devin.IDGenerator.DefaultIdGenerator">
+            <summary>
+            默认实现
+            </summary>
+        </member>
+        <member name="T:Devin.IDGenerator.IdHelper">
+            <summary>
+            这是一个调用的例子，默认情况下，单机集成者可以直接使用 NextId()。
+            </summary>
+        </member>
+        <member name="M:Devin.IDGenerator.IdHelper.SetIdGenerator(Devin.IDGenerator.IdGeneratorOptions)">
+            <summary>
+            设置参数，建议程序初始化时执行一次
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:Devin.IDGenerator.IdHelper.NextId">
+            <summary>
+            生成新的Id
+            调用本方法前，请确保调用了 SetIdGenerator 方法做初始化。
+            否则将会初始化一个WorkerId为1的对象。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Devin.JsonSerialization.Converters.NewtonsoftJson.NewtonsoftJsonIDNumberToMaskStringConverter">
+            <summary>
+            身份证掩码
+            </summary>
+        </member>
+        <member name="M:Devin.JsonSerialization.Converters.NewtonsoftJson.NewtonsoftJsonIDNumberToMaskStringConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+             <summary>
+            
+             </summary>
+             <param name="reader"></param>
+             <param name="objectType"></param>
+             <param name="existingValue"></param>
+             <param name="serializer"></param>
+             <returns></returns>
+             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Devin.JsonSerialization.Converters.NewtonsoftJson.NewtonsoftJsonLongToStringJsonConverter.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Devin.JsonSerialization.Converters.NewtonsoftJson.NewtonsoftJsonLongToStringJsonConverter.#ctor(System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="overMaxLengthOf17"></param>
+        </member>
+        <member name="P:Devin.JsonSerialization.Converters.NewtonsoftJson.NewtonsoftJsonLongToStringJsonConverter.OverMaxLengthOf17">
+            <summary>
+            是否超过最大长度 17 再处理
+            </summary>
+        </member>
+        <member name="P:Devin.JsonSerialization.Converters.NewtonsoftJson.NewtonsoftJsonLongToStringJsonConverter.CanRead">
+            <summary>
+            是否支持反序列化
+            </summary>
+        </member>
+        <member name="M:Devin.JsonSerialization.Converters.NewtonsoftJson.NewtonsoftJsonLongToStringJsonConverter.CanConvert(System.Type)">
+            <summary>
+            支持类型
+            </summary>
+            <param name="objectType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.JsonSerialization.Converters.NewtonsoftJson.NewtonsoftJsonLongToStringJsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+            <param name="serializer"></param>
+        </member>
+        <member name="M:Devin.JsonSerialization.Converters.NewtonsoftJson.NewtonsoftJsonLongToStringJsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            序列化
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+            <param name="serializer"></param>
+        </member>
+        <member name="T:Devin.JsonSerialization.Converters.NewtonsoftJson.NewtonsoftJsonMobileToMaskStringConverter">
+            <summary>
+            手机掩码
+            </summary>
+        </member>
+        <member name="T:Devin.JwtBearer.Extensions.ClaimsIdentityExtensions">
+            <summary>
+            claims扩展类
+            </summary>
+        </member>
+        <member name="M:Devin.JwtBearer.Extensions.ClaimsIdentityExtensions.FindClaim(System.Security.Claims.ClaimsPrincipal,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="principal"></param>
+             <param name="claimType"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Devin.JwtBearer.Extensions.ClaimsIdentityExtensions.FindClaims(System.Security.Claims.ClaimsPrincipal,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="principal"></param>
+             <param name="claimType"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Devin.JwtBearer.Extensions.JWTAuthorizationServiceCollectionExtensions">
+            <summary>
+            JWT 授权服务拓展类
+            </summary>
+        </member>
+        <member name="P:Devin.JwtBearer.JWTEncryption.ValidateIssuerSigningKey">
+            <summary>
+            验证签发方密钥
+            </summary>
+        </member>
+        <member name="P:Devin.JwtBearer.JWTEncryption.IssuerSigningKey">
+            <summary>
+            签发方密钥
+            </summary>
+        </member>
+        <member name="P:Devin.JwtBearer.JWTEncryption.ValidateIssuer">
+            <summary>
+            验证签发方
+            </summary>
+        </member>
+        <member name="P:Devin.JwtBearer.JWTEncryption.ValidIssuer">
+            <summary>
+            签发方
+            </summary>
+        </member>
+        <member name="P:Devin.JwtBearer.JWTEncryption.ValidateAudience">
+            <summary>
+            验证签收方
+            </summary>
+        </member>
+        <member name="P:Devin.JwtBearer.JWTEncryption.ValidAudience">
+            <summary>
+            签收方
+            </summary>
+        </member>
+        <member name="P:Devin.JwtBearer.JWTEncryption.ValidateLifetime">
+            <summary>
+            验证生存期
+            </summary>
+        </member>
+        <member name="P:Devin.JwtBearer.JWTEncryption.ClockSkew">
+            <summary>
+            过期时间容错值，解决服务器端时间不同步问题（秒）
+            </summary>
+        </member>
+        <member name="P:Devin.JwtBearer.JWTEncryption.ExpiredTime">
+            <summary>
+            过期时间（分钟）
+            </summary>
+        </member>
+        <member name="P:Devin.JwtBearer.JWTEncryption.Algorithm">
+            <summary>
+            加密算法
+            </summary>
+        </member>
+        <member name="P:Devin.JwtBearer.JWTEncryption.RequireExpirationTime">
+            <summary>
+            验证过期时间，设置 false 永不过期
+            </summary>
+        </member>
+        <member name="T:Devin.ObjectExtensions.StringExtensions">
+            <summary>
+            字符串扩展类
+            </summary>
+        </member>
+        <member name="M:Devin.ObjectExtensions.StringExtensions.MaskMobile(System.String)">
+            <summary>
+            手机号掩码
+            </summary>
+            <param name="mobile"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Devin.ObjectExtensions.StringExtensions.MaskIDNumber(System.String)">
+            <summary>
+            身份证号掩码
+            </summary>
+            <param name="idNumber"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:Devin.Utitlies.Extensions.EnumExtensions.GetDescription(System.Enum)">
+            <summary>
+            获取枚举描述
+            </summary>
+            <param name="errorCode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Devin.Options.Attributes.IgnoreOptionInjectionAttribute">
+            <summary>
+            忽略注入标注
+            </summary>
+        </member>
+        <member name="T:Devin.Options.Attributes.OptionsInjectionAttribute">
+            <summary>
+            配置自动注入配置标注
+            </summary>
+        </member>
+        <member name="T:Devin.Options.IOptionAutoInject">
+            <summary>
+            自动注入接口
+            </summary>
+        </member>
+        <member name="M:Devin.Reflection.Reflect.GetEntryAssembly">
+            <summary>
+            获取入口程序集
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.Reflection.Reflect.GetAssembly(System.String)">
+            <summary>
+            根据程序集名称获取运行时程序集
+            </summary>
+            <param name="assemblyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.Reflection.Reflect.LoadAssembly(System.String)">
+            <summary>
+            根据路径加载程序集
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.Reflection.Reflect.LoadAssembly(System.IO.MemoryStream)">
+            <summary>
+            通过流加载程序集
+            </summary>
+            <param name="assembly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.Reflection.Reflect.GetType(System.String,System.String)">
+            <summary>
+            根据程序集名称、类型完整限定名获取运行时类型
+            </summary>
+            <param name="assemblyName"></param>
+            <param name="typeFullName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.Reflection.Reflect.GetType(System.Reflection.Assembly,System.String)">
+            <summary>
+            根据程序集和类型完全限定名获取运行时类型
+            </summary>
+            <param name="assembly"></param>
+            <param name="typeFullName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.Reflection.Reflect.GetType(System.IO.MemoryStream,System.String)">
+            <summary>
+            根据程序集和类型完全限定名获取运行时类型
+            </summary>
+            <param name="assembly"></param>
+            <param name="typeFullName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.Reflection.Reflect.GetAssemblyName(System.Reflection.Assembly)">
+            <summary>
+            获取程序集名称
+            </summary>
+            <param name="assembly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.Reflection.Reflect.GetAssemblyName(System.Type)">
+            <summary>
+            获取程序集名称
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.Reflection.Reflect.GetAssemblyName(System.Reflection.TypeInfo)">
+            <summary>
+            获取程序集名称
+            </summary>
+            <param name="typeInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.Reflection.Reflect.GetStringType(System.String)">
+            <summary>
+            加载程序集类型，支持格式：程序集;完全限定的类型名称
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.ResponseWrapper.Middlewares.GlobalExceptionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            中间件执行方法
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Devin.SwaggerDocument.Internal.SwaggerLoginInfo.Enabled">
+            <summary>
+            是否启用授权控制
+            </summary>
+        </member>
+        <member name="P:Devin.SwaggerDocument.Internal.SwaggerLoginInfo.CheckUrl">
+            <summary>
+            检查登录地址
+            </summary>
+        </member>
+        <member name="P:Devin.SwaggerDocument.Internal.SwaggerLoginInfo.SubmitUrl">
+            <summary>
+            提交登录地址
+            </summary>
+        </member>
+        <member name="T:Devin.UnitOfWork.FilterAttributes.UnitOfWorkAttribute">
+            <summary>
+            工作单元配置特性
+            </summary>
+        </member>
+        <member name="T:Devin.UnitOfWork.IUnitOfWork">
+            <summary>
+            工作单元依赖接口
+            </summary>
+        </member>
+        <member name="M:Devin.UnitOfWork.IUnitOfWork.BeginTransaction(Microsoft.AspNetCore.Mvc.Filters.FilterContext,Devin.UnitOfWork.FilterAttributes.UnitOfWorkAttribute)">
+            <summary>
+            开启工作单元处理
+            </summary>
+            <param name="context"></param>
+            <param name="unitOfWork"></param>
+        </member>
+        <member name="M:Devin.UnitOfWork.IUnitOfWork.CommitTransaction(Microsoft.AspNetCore.Mvc.Filters.FilterContext,Devin.UnitOfWork.FilterAttributes.UnitOfWorkAttribute)">
+            <summary>
+            提交工作单元处理
+            </summary>
+            <param name="resultContext"></param>
+            <param name="unitOfWork"></param>
+        </member>
+        <member name="M:Devin.UnitOfWork.IUnitOfWork.RollbackTransaction(Microsoft.AspNetCore.Mvc.Filters.FilterContext,Devin.UnitOfWork.FilterAttributes.UnitOfWorkAttribute)">
+            <summary>
+            回滚工作单元处理
+            </summary>
+            <param name="resultContext"></param>
+            <param name="unitOfWork"></param>
+        </member>
+        <member name="M:Devin.UnitOfWork.IUnitOfWork.OnCompleted(Microsoft.AspNetCore.Mvc.Filters.FilterContext,Microsoft.AspNetCore.Mvc.Filters.FilterContext)">
+            <summary>
+            执行完毕（无论成功失败）
+            </summary>
+            <param name="context"></param>
+            <param name="resultContext"></param>
+        </member>
+    </members>
+</doc>
