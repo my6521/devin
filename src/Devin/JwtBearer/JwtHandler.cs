@@ -41,7 +41,7 @@ namespace Devin.JwtBearer
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Issuer = _jwtSettingOptions.ValidIssuer,
-                Audience = userId,
+                Audience = _jwtSettingOptions.ValidAudience,
                 Subject = claimsIdentity,
                 Expires = DateTime.Now.AddMinutes(lifetime),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettingOptions.IssuerSigningKey)),
@@ -68,13 +68,14 @@ namespace Devin.JwtBearer
 
             var tokenValidationParameters = new TokenValidationParameters
             {
-                ValidateIssuer = true,
                 ValidIssuer = _jwtSettingOptions.ValidIssuer,
-                ValidateAudience = false,
-                ValidateLifetime = true,
-                ClockSkew = TimeSpan.FromSeconds(0),
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettingOptions.IssuerSigningKey))
+                ValidateIssuerSigningKey = _jwtSettingOptions.ValidateIssuerSigningKey ?? true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettingOptions.IssuerSigningKey)),
+                ValidateIssuer = _jwtSettingOptions.ValidateIssuer ?? true,
+                ValidateAudience = _jwtSettingOptions.ValidateAudience ?? false,
+                ValidAudience = _jwtSettingOptions.ValidAudience,
+                ValidateLifetime = _jwtSettingOptions.ValidateLifetime ?? true,
+                ClockSkew = TimeSpan.FromSeconds(_jwtSettingOptions.ClockSkew ?? 0)
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -85,7 +86,7 @@ namespace Devin.JwtBearer
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }

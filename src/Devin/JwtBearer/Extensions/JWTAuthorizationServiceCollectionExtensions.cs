@@ -25,17 +25,6 @@ namespace Microsoft.Extensions.DependencyInjection
             var settings = new JWTSettingsOptions();
             jwtSettingConfiure?.Invoke(settings);
 
-            var tokenValidationParameters = new TokenValidationParameters
-            {
-                ValidIssuer = settings.ValidIssuer,
-                ValidateIssuerSigningKey = settings.ValidateIssuerSigningKey ?? true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.IssuerSigningKey)),
-                ValidateIssuer = settings.ValidateIssuer ?? true,
-                ValidateAudience = settings.ValidateAudience ?? false,
-                ValidateLifetime = settings.ValidateLifetime ?? true,
-                ClockSkew = TimeSpan.FromSeconds(settings.ClockSkew ?? 0)
-            };
-
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -45,7 +34,17 @@ namespace Microsoft.Extensions.DependencyInjection
                 authenticationConfigure?.Invoke(options);
             }).AddJwtBearer(options =>
             {
-                options.TokenValidationParameters = tokenValidationParameters;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = settings.ValidIssuer,
+                    ValidateIssuerSigningKey = settings.ValidateIssuerSigningKey ?? true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.IssuerSigningKey)),
+                    ValidateIssuer = settings.ValidateIssuer ?? true,
+                    ValidateAudience = settings.ValidateAudience ?? false,
+                    ValidAudience = settings.ValidAudience,
+                    ValidateLifetime = settings.ValidateLifetime ?? true,
+                    ClockSkew = TimeSpan.FromSeconds(settings.ClockSkew ?? 0)
+                };
 
                 options.Events = new JwtBearerEvents()
                 {
