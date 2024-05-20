@@ -50,6 +50,28 @@
             配置注册拓展类
             </summary>
         </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ResponseWrapperBuilderExtensions">
+            <summary>
+            统一返回格式
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ResponseWrapperBuilderExtensions.AddResponseWrapper(Microsoft.Extensions.DependencyInjection.IMvcBuilder,System.Action{Microsoft.AspNetCore.Mvc.MvcNewtonsoftJsonOptions})">
+            <summary>
+            添加统一返回格式
+            </summary>
+            <param name="mvcBuilder"></param>
+            <param name="jsonOptionSetupAction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ResponseWrapperBuilderExtensions.AddResponseWrapper(Microsoft.Extensions.DependencyInjection.IMvcBuilder,System.Action{Devin.ResponseWrapper.Options.ResponseWrapperOptions},System.Action{Microsoft.AspNetCore.Mvc.MvcNewtonsoftJsonOptions})">
+            <summary>
+            添加统一返回格式
+            </summary>
+            <param name="mvcBuilder"></param>
+            <param name="optionSetupAction"></param>
+            <param name="jsonOptionSetupAction"></param>
+            <returns></returns>
+        </member>
         <member name="T:Microsoft.Extensions.DependencyInjection.SwaggerDocumentServiceCollectionExtensions">
             <summary>
             Swagger拓展

@@ -6,6 +6,7 @@ namespace Devin.TestApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddHttpContextAccessor();
             //自动注入所有标注配置
             builder.Services.AddOptionsInject(builder.Configuration);
             //自动注入所有标注服务
