@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="AspNetCore\Attributes\" />
     <Folder Include="JsonSerialization\Converters\SystemTextJson\" />
-    <Folder Include="Authorization\" />
     <Folder Include="IDGenerator\" />
     <Folder Include="WebSockets\" />
   </ItemGroup>

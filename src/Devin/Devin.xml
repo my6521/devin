@@ -197,6 +197,47 @@
             <param name="builder"></param>
             <returns></returns>
         </member>
+        <member name="T:Devin.Authorization.Attributes.ActionAuthorizeAttribute">
+            <summary>
+            Action权限标注
+            </summary>
+        </member>
+        <member name="M:Devin.Authorization.Attributes.ActionAuthorizeAttribute.#ctor(System.String[])">
+            <summary>
+            构造函数
+            </summary>
+            <param name="permission">权限标识，多个使用逗号分割</param>
+        </member>
+        <member name="T:Devin.Authorization.Filters.ActionAuthorizeFilter">
+            <summary>
+            Action权限认证
+            </summary>
+        </member>
+        <member name="M:Devin.Authorization.Filters.ActionAuthorizeFilter.#ctor(System.String[])">
+            <summary>
+            构造函数
+            </summary>
+            <param name="permission"></param>
+        </member>
+        <member name="M:Devin.Authorization.Filters.ActionAuthorizeFilter.OnAuthorization(Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext)">
+             <summary>
+            
+             </summary>
+             <param name="context"></param>
+             <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:Devin.Authorization.IActionAuthorizeValidator">
+            <summary>
+            Action权限验证接口
+            </summary>
+        </member>
+        <member name="M:Devin.Authorization.IActionAuthorizeValidator.Valid(System.String[])">
+            <summary>
+            验证
+            </summary>
+            <param name="permission"></param>
+            <returns></returns>
+        </member>
         <member name="M:Devin.DataEncryption.Encryptions.AESEncryption.Encrypt(System.String,System.String,System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
             <summary>
             加密
@@ -930,12 +971,13 @@
             </summary>
             <param name="jwtSettingOptions"></param>
         </member>
-        <member name="M:Devin.JwtBearer.JwtHandler.GenerateToken(System.String,System.Security.Claims.ClaimsIdentity)">
+        <member name="M:Devin.JwtBearer.JwtHandler.GenerateToken(System.String,System.Security.Claims.ClaimsIdentity,System.Nullable{System.Int32})">
             <summary>
             生成Token
             </summary>
             <param name="userId">用户标识</param>
             <param name="claimsIdentity">额外</param>
+            <param name="expiredTime">超时时间</param>
             <returns></returns>
         </member>
         <member name="M:Devin.JwtBearer.JwtHandler.ValidateToken(System.String,System.Security.Claims.ClaimsPrincipal@)">

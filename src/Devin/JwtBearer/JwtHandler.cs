@@ -28,16 +28,16 @@ namespace Devin.JwtBearer
         /// </summary>
         /// <param name="userId">用户标识</param>
         /// <param name="claimsIdentity">额外</param>
+        /// <param name="expiredTime">超时时间</param>
         /// <returns></returns>
-        public TokenResult GenerateToken(string userId, ClaimsIdentity claimsIdentity = null)
+        public TokenResult GenerateToken(string userId, ClaimsIdentity claimsIdentity = null, int? expiredTime = null)
         {
             var result = new TokenResult();
 
             if (claimsIdentity == null) claimsIdentity = new ClaimsIdentity();
             claimsIdentity.AddClaim(new Claim(ClaimsConst.UserId, userId));
-            claimsIdentity.AddClaim(new Claim(ClaimsConst.Issuer, _jwtSettingOptions.ValidIssuer));
 
-            var lifetime = _jwtSettingOptions.ExpiredTime ?? 120;
+            var lifetime = expiredTime ?? _jwtSettingOptions.ExpiredTime ?? 120;
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Issuer = _jwtSettingOptions.ValidIssuer,

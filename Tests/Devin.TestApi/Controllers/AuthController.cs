@@ -1,5 +1,7 @@
-﻿using Devin.JwtBearer;
+﻿using Devin.Authorization.Attributes;
+using Devin.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Devin.TestApi.Controllers
 {
@@ -17,9 +19,16 @@ namespace Devin.TestApi.Controllers
         [HttpGet]
         public TokenResult GenerateToken()
         {
-            var result = _jwtHandler.GenerateToken("1");
+            var token = _jwtHandler.GenerateToken("1");
+            var valid = _jwtHandler.ValidateToken(token.AccessToken, out ClaimsPrincipal claimsPrincipal);
 
-            return result;
+            return token;
+        }
+
+        [HttpGet]
+        [ActionAuthorize("ActionAuthorize")]
+        public void ActionAuthorize()
+        {
         }
     }
 }
