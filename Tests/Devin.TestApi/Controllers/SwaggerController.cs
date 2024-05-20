@@ -7,6 +7,7 @@ namespace Devin.TestApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]
+    [DisableResponseWrapper]
     public class SwaggerController : ControllerBase
     {
         private readonly JwtHandler _jwtHandler;
@@ -19,14 +20,12 @@ namespace Devin.TestApi.Controllers
         }
 
         [HttpPost]
-        [DisableResponseWrapper]
         public int CheckUrl()
         {
             return _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated ? 200 : 401;
         }
 
         [HttpPost]
-        [DisableResponseWrapper]
         public int SubmitUrl([FromForm] SwaggerAuth request)
         {
             try
