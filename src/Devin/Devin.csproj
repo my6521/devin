@@ -16,6 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="WebSockets\**" />
+    <EmbeddedResource Remove="WebSockets\**" />
+    <None Remove="WebSockets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="SwaggerDocument\Assets\index.html" />
   </ItemGroup>
 
@@ -27,7 +33,6 @@
     <Folder Include="AspNetCore\Attributes\" />
     <Folder Include="JsonSerialization\Converters\SystemTextJson\" />
     <Folder Include="IDGenerator\" />
-    <Folder Include="WebSockets\" />
   </ItemGroup>
   
   <ItemGroup>
