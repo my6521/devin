@@ -1,8 +1,11 @@
-﻿namespace Devin.JwtBearer.Options
+﻿using Devin.Options.Attributes;
+
+namespace Devin.JwtBearer.Options
 {
     /// <summary>
     ///
     /// </summary>
+    [IgnoreOptionInjection]
     public class JWTSettingsOptions
     {
         /// <summary>

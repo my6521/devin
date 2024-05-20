@@ -4,6 +4,9 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
+    /// <summary>
+    /// Swagger拓展
+    /// </summary>
     public static class SwaggerDocumentServiceCollectionExtensions
     {
         public static IServiceCollection AddSwaggerDocuments(this IServiceCollection services, Action<SwaggerDocumentSettingsOptions> configure = default, Action<SwaggerGenOptions> setupAction = default)
