@@ -9,13 +9,29 @@ using Newtonsoft.Json.Serialization;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
+    /// <summary>
+    /// 统一返回格式
+    /// </summary>
     public static class ResponseWrapperBuilderExtensions
     {
+        /// <summary>
+        /// 添加统一返回格式
+        /// </summary>
+        /// <param name="mvcBuilder"></param>
+        /// <param name="jsonOptionSetupAction"></param>
+        /// <returns></returns>
         public static IMvcBuilder AddResponseWrapper(this IMvcBuilder mvcBuilder, Action<MvcNewtonsoftJsonOptions> jsonOptionSetupAction = default)
         {
             return AddResponseWrapper(mvcBuilder, _ => { }, jsonOptionSetupAction);
         }
 
+        /// <summary>
+        /// 添加统一返回格式
+        /// </summary>
+        /// <param name="mvcBuilder"></param>
+        /// <param name="optionSetupAction"></param>
+        /// <param name="jsonOptionSetupAction"></param>
+        /// <returns></returns>
         public static IMvcBuilder AddResponseWrapper(this IMvcBuilder mvcBuilder, Action<ResponseWrapperOptions> optionSetupAction, Action<MvcNewtonsoftJsonOptions> jsonOptionSetupAction = default)
         {
             mvcBuilder.Services.Configure(optionSetupAction);
