@@ -3,16 +3,16 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-      <Nullable>disable</Nullable>
-      <PackageId>Devin</PackageId>
-      <Version>1.0.0-preview01</Version>
-      <Authors>my6521</Authors>
-      <Description>NET基础框架</Description>
-      <PackageLicenseExpression>MIT</PackageLicenseExpression>
-      <RepositoryUrl>https://github.com/my6521/devin</RepositoryUrl>
-      <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-      <GenerateDocumentationFile>True</GenerateDocumentationFile>
-      <DocumentationFile>Devin.xml</DocumentationFile>
+    <Nullable>disable</Nullable>
+    <PackageId>Devin</PackageId>
+    <Version>1.0.0-preview01</Version>
+    <Authors>my6521</Authors>
+    <Description>NET基础框架</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/my6521/devin</RepositoryUrl>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>Devin.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
