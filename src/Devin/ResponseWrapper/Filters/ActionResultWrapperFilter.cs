@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Devin.ResponseWrapper.Filters
 {
+    /// <summary>
+    /// 控制器统一处理
+    /// </summary>
     public class ActionResultWrapperFilter : IActionFilter
     {
         private readonly IApiResult _responseWrapper;

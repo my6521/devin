@@ -1203,6 +1203,112 @@
             <param name="str"></param>
             <returns></returns>
         </member>
+        <member name="T:Devin.ResponseWrapper.ApiResult">
+            <summary>
+            统一数据格式
+            </summary>
+        </member>
+        <member name="P:Devin.ResponseWrapper.ApiResult.Code">
+            <summary>
+            接口返回代码
+            </summary>
+        </member>
+        <member name="P:Devin.ResponseWrapper.ApiResult.Message">
+            <summary>
+            接口返回消息
+            </summary>
+        </member>
+        <member name="M:Devin.ResponseWrapper.ApiResult.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Devin.ResponseWrapper.ApiResult.#ctor(System.Int32,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="code">返回代码</param>
+            <param name="message">返回消息</param>
+        </member>
+        <member name="M:Devin.ResponseWrapper.ApiResult.Ok">
+            <summary>
+            成功
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.ResponseWrapper.ApiResult.Error(System.Int32,System.String)">
+            <summary>
+            失败
+            </summary>
+            <param name="code"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Devin.ResponseWrapper.ApiResult`1">
+            <summary>
+            泛型返回数据
+            </summary>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="P:Devin.ResponseWrapper.ApiResult`1.Data">
+            <summary>
+            返回数据
+            </summary>
+        </member>
+        <member name="M:Devin.ResponseWrapper.ApiResult`1.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Devin.ResponseWrapper.ApiResult`1.#ctor(System.Int32,System.String,`0)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="code">返回代码</param>
+            <param name="message">返回消息</param>
+            <param name="data">返回数据</param>
+        </member>
+        <member name="M:Devin.ResponseWrapper.ApiResult`1.Ok(`0)">
+            <summary>
+            成功返回
+            </summary>
+            <param name="response">返回数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:Devin.ResponseWrapper.Attributes.DisableResponseWrapperAttribute">
+            <summary>
+            忽略接口统一数据结构
+            </summary>
+        </member>
+        <member name="T:Devin.ResponseWrapper.Filters.ActionResultWrapperFilter">
+            <summary>
+            控制器统一处理
+            </summary>
+        </member>
+        <member name="T:Devin.ResponseWrapper.Filters.ModelInvalidWrapperFilter">
+            <summary>
+            模型验证
+            </summary>
+        </member>
+        <member name="T:Devin.ResponseWrapper.IApiResult">
+            <summary>
+            接口返回结构
+            </summary>
+        </member>
+        <member name="M:Devin.ResponseWrapper.IApiResult.Ok">
+            <summary>
+            成功
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Devin.ResponseWrapper.IApiResult.Error(System.Int32,System.String)">
+            <summary>
+            失败
+            </summary>
+            <param name="code"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
         <member name="M:Devin.ResponseWrapper.Middlewares.GlobalExceptionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
             <summary>
             中间件执行方法

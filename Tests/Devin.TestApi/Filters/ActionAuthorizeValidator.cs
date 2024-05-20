@@ -1,7 +1,7 @@
 ﻿using Devin.Authorization;
 using Devin.DependencyInjection.Dependencies;
 
-namespace Devin.TestApi
+namespace Devin.TestApi.Filters
 {
     public class ActionAuthorizeValidator : IActionAuthorizeValidator, IScoped
     {

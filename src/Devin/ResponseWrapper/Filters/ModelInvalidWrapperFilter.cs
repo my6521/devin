@@ -6,6 +6,9 @@ using Microsoft.Extensions.Logging;
 
 namespace Devin.ResponseWrapper.Filters
 {
+    /// <summary>
+    /// 模型验证
+    /// </summary>
     public class ModelInvalidWrapperFilter : IActionFilter
     {
         private readonly IApiResult _responseWrapper;
