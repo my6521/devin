@@ -86,5 +86,10 @@ namespace Devin.ObjectExtensions
 
             return Regex.Replace(idNumber, "(\\d{6})\\d{8}(\\d{4})", "$1********$2");
         }
+
+        public static string Format(this string str, params object[] args)
+        {
+            return args == null || args.Length == 0 ? str : string.Format(str, args);
+        }
     }
 }

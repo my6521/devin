@@ -1,12 +1,16 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Concurrent;
+using System.ComponentModel;
 using System.Reflection;
 
 namespace Devin.Utitlies.Extensions
 {
+    /// <summary>
+    /// 枚举拓展类
+    /// </summary>
     public static class EnumExtensions
     {
         //缓存
-        private static Dictionary<Enum, Tuple<int, string>> caches = new Dictionary<Enum, Tuple<int, string>>();
+        private static ConcurrentDictionary<Enum, Tuple<int, string>> caches = new ConcurrentDictionary<Enum, Tuple<int, string>>();
 
         /// <summary>
         /// 获取枚举描述

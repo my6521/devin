@@ -19,8 +19,17 @@ namespace Devin.FriendlyException
         /// 构造函数
         /// </summary>
         /// <param name="message"></param>
+        public AppFriendlyException(string message) : base(message)
+        {
+            ErrorMessage = message;
+        }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="message"></param>
         /// <param name="errorCode"></param>
-        public AppFriendlyException(string message, object errorCode) : base(message)
+        public AppFriendlyException(string message, int errorCode) : base(message)
         {
             ErrorMessage = message;
             ErrorCode = OriginErrorCode = errorCode;
@@ -32,7 +41,7 @@ namespace Devin.FriendlyException
         /// <param name="message"></param>
         /// <param name="errorCode"></param>
         /// <param name="innerException"></param>
-        public AppFriendlyException(string message, object errorCode, Exception innerException) : base(message, innerException)
+        public AppFriendlyException(string message, int errorCode, Exception innerException) : base(message, innerException)
         {
             ErrorMessage = message;
             ErrorCode = OriginErrorCode = errorCode;
@@ -50,17 +59,17 @@ namespace Devin.FriendlyException
         /// <summary>
         /// 错误码
         /// </summary>
-        public object ErrorCode { get; set; }
+        public int ErrorCode { get; set; }
 
         /// <summary>
         /// 错误码（没被复写过的 ErrorCode ）
         /// </summary>
-        public object OriginErrorCode { get; set; }
+        public int OriginErrorCode { get; set; }
 
         /// <summary>
         /// 错误消息（支持 Object 对象）
         /// </summary>
-        public object ErrorMessage { get; set; }
+        public string ErrorMessage { get; set; }
 
         /// <summary>
         /// 状态码

@@ -655,14 +655,20 @@
             构造函数
             </summary>
         </member>
-        <member name="M:Devin.FriendlyException.AppFriendlyException.#ctor(System.String,System.Object)">
+        <member name="M:Devin.FriendlyException.AppFriendlyException.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Devin.FriendlyException.AppFriendlyException.#ctor(System.String,System.Int32)">
             <summary>
             构造函数
             </summary>
             <param name="message"></param>
             <param name="errorCode"></param>
         </member>
-        <member name="M:Devin.FriendlyException.AppFriendlyException.#ctor(System.String,System.Object,System.Exception)">
+        <member name="M:Devin.FriendlyException.AppFriendlyException.#ctor(System.String,System.Int32,System.Exception)">
             <summary>
             构造函数
             </summary>
@@ -705,6 +711,41 @@
         <member name="P:Devin.FriendlyException.AppFriendlyException.Data">
             <summary>
             额外数据
+            </summary>
+        </member>
+        <member name="T:Devin.FriendlyException.Attributes.ErrorCodeItemMetadataAttribute">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Devin.FriendlyException.Attributes.ErrorCodeItemMetadataAttribute.ErrorMessage">
+            <summary>
+            错误消息
+            </summary>
+        </member>
+        <member name="P:Devin.FriendlyException.Attributes.ErrorCodeItemMetadataAttribute.ErrorCode">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="T:Devin.FriendlyException.Attributes.ErrorCodeTypeAttribute">
+            <summary>
+            错误代码类型特性
+            </summary>
+        </member>
+        <member name="T:Devin.FriendlyException.Oops">
+            <summary>
+            抛异常静态类
+            </summary>
+        </member>
+        <member name="F:Devin.FriendlyException.Oops._errorCodeTypes">
+            <summary>
+            错误代码类型
+            </summary>
+        </member>
+        <member name="F:Devin.FriendlyException.Oops._errorCodeMessages">
+            <summary>
+            错误消息字典
             </summary>
         </member>
         <member name="P:Devin.IDGenerator.IdGeneratorOptions.Method">
@@ -1101,6 +1142,11 @@
             <returns></returns>
             <exception cref="T:System.ArgumentNullException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="T:Devin.Utitlies.Extensions.EnumExtensions">
+            <summary>
+            枚举拓展类
+            </summary>
         </member>
         <member name="M:Devin.Utitlies.Extensions.EnumExtensions.GetDescription(System.Enum)">
             <summary>
