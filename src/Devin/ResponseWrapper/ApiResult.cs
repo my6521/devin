@@ -18,6 +18,11 @@ namespace Devin.ResponseWrapper
         public string Message { get; }
 
         /// <summary>
+        /// 是否成功
+        /// </summary>
+        public bool IsSuccess => Code > 0;
+
+        /// <summary>
         /// 构造函数
         /// </summary>
         public ApiResult()
@@ -52,6 +57,11 @@ namespace Devin.ResponseWrapper
         /// <returns></returns>
         public IApiResult Error(int code, string message)
         {
+            if (code == 0)
+            {
+                code = ResponseWrapperDefaults.BusinessErrorCode;
+            }
+
             return new ApiResult(code, message);
         }
     }

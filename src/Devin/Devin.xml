@@ -1264,6 +1264,11 @@
             接口返回消息
             </summary>
         </member>
+        <member name="P:Devin.ResponseWrapper.ApiResult.IsSuccess">
+            <summary>
+            是否成功
+            </summary>
+        </member>
         <member name="M:Devin.ResponseWrapper.ApiResult.#ctor">
             <summary>
             构造函数
