@@ -20,7 +20,7 @@ namespace Devin.ResponseWrapper
         /// <summary>
         /// 是否成功
         /// </summary>
-        public bool IsSuccess => Code > 0;
+        public bool IsSuccess => Code == 0;
 
         /// <summary>
         /// 构造函数
