@@ -4,8 +4,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
         <PackageId>Devin</PackageId>
-        <Version>6.0.0-preview06</Version>
-        <Authors>my6521</Authors>
+        <Version>6.0.0-preview07</Version>
+        <Authors>Wwb</Authors>
         <Description>NET基础框架</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/my6521/devin</RepositoryUrl>
