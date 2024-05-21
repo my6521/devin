@@ -18,7 +18,7 @@ namespace Devin.FriendlyException
         /// <summary>
         /// 错误消息字典
         /// </summary>
-        private static readonly ConcurrentDictionary<string, Tuple<string, int>> _errorCodeMessages;
+        private static readonly ConcurrentDictionary<string, ErrorCodeItemMetadataAttribute> _errorCodeMessages;
 
         static Oops()
         {
@@ -50,12 +50,12 @@ namespace Devin.FriendlyException
         {
             var key = $"{errorCode.GetType().FullName}::{errorCode.ToString()}";
             var errorCodeMessage = _errorCodeMessages[key];
-            var message = errorCodeMessage.Item1;
+            var message = errorCodeMessage.ErrorMessage;
             if (formatTexts.Length > 0)
             {
                 message = string.Format(message, formatTexts);
             }
-            return new AppFriendlyException(message, errorCodeMessage.Item2);
+            return new AppFriendlyException(message, errorCodeMessage.ErrorCode);
         }
 
         #region 私有方法
@@ -67,9 +67,9 @@ namespace Devin.FriendlyException
             return errorCodeTypes.Distinct();
         }
 
-        private static ConcurrentDictionary<string, Tuple<string, int>> GetErrorCodeMessages()
+        private static ConcurrentDictionary<string, ErrorCodeItemMetadataAttribute> GetErrorCodeMessages()
         {
-            var defaultErrorCodeMessages = new ConcurrentDictionary<string, Tuple<string, int>>();
+            var defaultErrorCodeMessages = new ConcurrentDictionary<string, ErrorCodeItemMetadataAttribute>();
 
             var errorCodeMessages = _errorCodeTypes.SelectMany(u => u.GetFields()
                 .Where(u => u.IsDefined(typeof(ErrorCodeItemMetadataAttribute))))
@@ -84,11 +84,11 @@ namespace Devin.FriendlyException
             return defaultErrorCodeMessages;
         }
 
-        private static (string Key, Tuple<string, int> value) GetErrorCodeItemInformation(FieldInfo fieldInfo)
+        private static (string Key, ErrorCodeItemMetadataAttribute value) GetErrorCodeItemInformation(FieldInfo fieldInfo)
         {
             var key = $"{fieldInfo.FieldType.FullName}::{fieldInfo.Name}";
             var errorCodeItemMetadata = fieldInfo.GetCustomAttribute<ErrorCodeItemMetadataAttribute>();
-            return (key, new Tuple<string, int>(errorCodeItemMetadata.ErrorMessage, errorCodeItemMetadata.ErrorCode));
+            return (key, errorCodeItemMetadata);
         }
 
         #endregion 私有方法
