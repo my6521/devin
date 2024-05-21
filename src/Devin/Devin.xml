@@ -1148,13 +1148,6 @@
             枚举拓展类
             </summary>
         </member>
-        <member name="M:Devin.Utitlies.Extensions.EnumExtensions.GetDescription(System.Enum)">
-            <summary>
-            获取枚举描述
-            </summary>
-            <param name="errorCode"></param>
-            <returns></returns>
-        </member>
         <member name="T:Devin.Options.Attributes.IgnoreOptionInjectionAttribute">
             <summary>
             忽略注入标注
