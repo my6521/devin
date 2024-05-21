@@ -4,14 +4,16 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
         <PackageId>Devin</PackageId>
-        <Version>6.0.0-preview03</Version>
+        <Version>6.0.0-preview04</Version>
         <Authors>my6521</Authors>
         <Description>NET基础框架</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/my6521/devin</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/my6521/devin</PackageProjectUrl>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <DocumentationFile>Devin.xml</DocumentationFile>
+        
     </PropertyGroup>
     
     <ItemGroup>
