@@ -2,6 +2,9 @@
 
 namespace Devin.JsonSerialization.Converters.NewtonsoftJson
 {
+    /// <summary>
+    /// long序列化为字符串
+    /// </summary>
     public class NewtonsoftJsonLongToStringJsonConverter : JsonConverter
     {
         /// <summary>
@@ -43,8 +46,9 @@ namespace Devin.JsonSerialization.Converters.NewtonsoftJson
         /// <summary>
         /// 反序列化
         /// </summary>
-        /// <param name="writer"></param>
-        /// <param name="value"></param>
+        /// <param name="reader"></param>
+        /// <param name="objectType"></param>
+        /// <param name="existingValue"></param>
         /// <param name="serializer"></param>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
