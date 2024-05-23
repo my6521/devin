@@ -10,12 +10,12 @@ namespace Devin.ResponseWrapper
         /// <summary>
         /// 接口返回代码
         /// </summary>
-        public int Code { get; }
+        public int Code { get; set; }
 
         /// <summary>
         /// 接口返回消息
         /// </summary>
-        public string Message { get; }
+        public string Message { get; set; }
 
         /// <summary>
         /// 是否成功

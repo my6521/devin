@@ -1,6 +1,6 @@
 ﻿namespace Devin.ResponseWrapper
 {
-    public interface IApiResult<in TResponse> : IApiResult
+    public interface IApiResult<TResponse> : IApiResult
     {
         IApiResult<TResponse> Ok(TResponse response);
     }

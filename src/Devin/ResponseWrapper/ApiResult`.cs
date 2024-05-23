@@ -11,7 +11,7 @@ namespace Devin.ResponseWrapper
         /// <summary>
         /// 返回数据
         /// </summary>
-        public TResponse Data { get; }
+        public TResponse Data { get; set; }
 
         /// <summary>
         /// 构造函数
