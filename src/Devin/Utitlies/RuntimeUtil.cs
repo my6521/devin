@@ -7,10 +7,12 @@ namespace Devin.Utitlies
     public static class RuntimeUtil
     {
         public static List<Assembly> AllAssemblies { get; private set; }
+        public static List<Type> AllTypes { get; private set; }
 
         static RuntimeUtil()
         {
             AllAssemblies = GetAllAssemblies();
+            AllTypes = AllAssemblies.SelectMany(x => x.ExportedTypes).ToList();
         }
 
         private static List<Assembly> GetAllAssemblies()
