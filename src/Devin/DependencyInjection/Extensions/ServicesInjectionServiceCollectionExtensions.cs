@@ -67,7 +67,10 @@ namespace Microsoft.Extensions.DependencyInjection
             }
 
             //如果没有接口
-            if (!canInjectInterfaces.Any()) return;
+            if (!canInjectInterfaces.Any())
+            {
+                return;
+            }
 
             // 只注册第一个接口
             if (injectionAttribute.Pattern is ServiceInjectionPatterns.FirstInterface or ServiceInjectionPatterns.SelfWithFirstInterface)
