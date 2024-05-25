@@ -61,14 +61,20 @@ namespace Microsoft.Extensions.DependencyInjection
         private static void RegisterServices(IServiceCollection services, Type dependencyType, Type type, ServiceInjectionAttribute injectionAttribute, IEnumerable<Type> canInjectInterfaces)
         {
             // 注册自己
+            bool self = false;
             if (injectionAttribute.Pattern is ServiceInjectionPatterns.Self or ServiceInjectionPatterns.All or ServiceInjectionPatterns.SelfWithFirstInterface)
             {
+                self = true;
                 Register(services, dependencyType, type, injectionAttribute);
             }
 
             //如果没有接口
             if (!canInjectInterfaces.Any())
             {
+                if (!self)
+                {
+                    Register(services, dependencyType, type, injectionAttribute);
+                }
                 return;
             }
 

@@ -8,6 +8,7 @@
     {
         public ServiceInjectionAttribute()
         {
+            Pattern = ServiceInjectionPatterns.FirstInterface;
         }
 
         /// <summary>
