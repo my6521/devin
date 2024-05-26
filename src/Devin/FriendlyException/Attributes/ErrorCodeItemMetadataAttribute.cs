@@ -6,6 +6,10 @@
     [AttributeUsage(AttributeTargets.Field)]
     public class ErrorCodeItemMetadataAttribute : Attribute
     {
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="errorMessage"></param>
         public ErrorCodeItemMetadataAttribute(string errorMessage)
         {
             ErrorMessage = errorMessage;
