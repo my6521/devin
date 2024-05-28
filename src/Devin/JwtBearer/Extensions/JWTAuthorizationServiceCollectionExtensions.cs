@@ -22,8 +22,9 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         public static IServiceCollection AddJwt(this IServiceCollection services, Action<JWTSettingsOptions> jwtSettingConfiure, Action<AuthenticationOptions> authenticationConfigure = null, Action<JwtBearerOptions> jwtBearerConfigure = null)
         {
-            var settings = new JWTSettingsOptions();
-            jwtSettingConfiure?.Invoke(settings);
+            var jwtSettings = new JWTSettingsOptions();
+            jwtSettingConfiure?.Invoke(jwtSettings);
+            SetDefaultJwtSettings(jwtSettings);
 
             services.AddAuthentication(options =>
             {
@@ -36,14 +37,24 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidIssuer = settings.ValidIssuer,
-                    ValidateIssuerSigningKey = settings.ValidateIssuerSigningKey ?? true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.IssuerSigningKey)),
-                    ValidateIssuer = settings.ValidateIssuer ?? true,
-                    ValidateAudience = settings.ValidateAudience ?? false,
-                    ValidAudience = settings.ValidAudience,
-                    ValidateLifetime = settings.ValidateLifetime ?? true,
-                    ClockSkew = TimeSpan.FromSeconds(settings.ClockSkew ?? 0)
+                    // 验证签发方密钥
+                    ValidateIssuerSigningKey = jwtSettings.ValidateIssuerSigningKey.Value,
+                    // 签发方密钥
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.IssuerSigningKey)),
+                    // 验证签发方
+                    ValidateIssuer = jwtSettings.ValidateIssuer.Value,
+                    // 设置签发方
+                    ValidIssuer = jwtSettings.ValidIssuer,
+                    // 验证签收方
+                    ValidateAudience = jwtSettings.ValidateAudience.Value,
+                    // 设置接收方
+                    ValidAudience = jwtSettings.ValidAudience,
+                    // 验证生存期
+                    ValidateLifetime = jwtSettings.ValidateLifetime.Value,
+                    // 过期时间容错值
+                    ClockSkew = TimeSpan.FromSeconds(jwtSettings.ClockSkew.Value),
+                    // 验证过期时间，设置 false 永不过期
+                    RequireExpirationTime = jwtSettings.RequireExpirationTime
                 };
 
                 options.Events = new JwtBearerEvents()
@@ -58,10 +69,38 @@ namespace Microsoft.Extensions.DependencyInjection
                 jwtBearerConfigure?.Invoke(options);
             });
 
-            services.AddSingleton(settings);
+            services.AddSingleton(jwtSettings);
             services.AddScoped<JwtHandler>();
 
             return services;
+        }
+
+        internal static JWTSettingsOptions SetDefaultJwtSettings(JWTSettingsOptions options)
+        {
+            options.ValidateIssuerSigningKey ??= true;
+            if (options.ValidateIssuerSigningKey == true)
+            {
+                options.IssuerSigningKey ??= "U2FsdGVkX1+6H3D8Q//yQMhInzTdRZI9DbUGetbyaag=";
+            }
+            options.ValidateIssuer ??= true;
+            if (options.ValidateIssuer == true)
+            {
+                options.ValidIssuer ??= "dotnetchina";
+            }
+            options.ValidateAudience ??= true;
+            if (options.ValidateAudience == true)
+            {
+                options.ValidAudience ??= "powerby Furion";
+            }
+            options.ValidateLifetime ??= true;
+            if (options.ValidateLifetime == true)
+            {
+                options.ClockSkew ??= 10;
+            }
+            options.ExpiredTime ??= 20;
+            options.Algorithm ??= SecurityAlgorithms.HmacSha256;
+
+            return options;
         }
     }
 }

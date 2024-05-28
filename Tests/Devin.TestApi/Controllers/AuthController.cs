@@ -1,8 +1,6 @@
 ﻿using Devin.Authorization.Attributes;
-using Devin.FriendlyException;
 using Devin.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace Devin.TestApi.Controllers
 {
@@ -18,16 +16,21 @@ namespace Devin.TestApi.Controllers
         }
 
         [HttpGet]
-        public TokenResult GenerateToken()
+        public dynamic GenerateToken()
         {
-            var token = _jwtHandler.GenerateToken("1");
-            var valid = _jwtHandler.ValidateToken(token.AccessToken, out ClaimsPrincipal claimsPrincipal);
-            if (!valid)
+            var accessToken = _jwtHandler.Encrypt(new Dictionary<string, object>
             {
-                throw Oops.Oh(ErrorCodes.NetworkError);
-            }
+                { "UserId", "1" },
+            }, 7200);
 
-            return token;
+            var resfreshToken = _jwtHandler.GenerateRefreshToken(accessToken);
+            var (valid, token, result) = _jwtHandler.Validate(accessToken);
+
+            return new
+            {
+                AccessToken = accessToken,
+                RefreshToken = resfreshToken
+            };
         }
 
         [HttpGet]

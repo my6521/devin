@@ -52,5 +52,8 @@ namespace Devin.JwtBearer.Options
         /// 过期时间（分钟）
         /// </summary>
         public int? ExpiredTime { get; set; }
+
+        public string Algorithm { get; set; }
+        public bool RequireExpirationTime { get; set; }
     }
 }
