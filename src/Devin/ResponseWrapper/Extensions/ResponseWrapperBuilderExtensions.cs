@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -46,7 +45,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 c.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 c.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
-                c.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                //c.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 c.SerializerSettings.Converters.Add(new NewtonsoftJsonLongToStringJsonConverter());
 
                 jsonOptionSetupAction?.Invoke(c);
