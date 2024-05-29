@@ -2,9 +2,7 @@
 {
     public static class ResponseWrapperDefaults
     {
-        public const int OkCode = 0;
-
-        public const int BusinessErrorCode = 1;
+        public const int OkCode = 200;
 
         public const int ClientErrorCode = 400;
 

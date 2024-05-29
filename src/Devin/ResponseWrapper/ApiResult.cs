@@ -20,7 +20,7 @@ namespace Devin.ResponseWrapper
         /// <summary>
         /// 是否成功
         /// </summary>
-        public bool IsSuccess => Code == 0;
+        public bool IsSuccess => Code == 200;
 
         /// <summary>
         /// 构造函数
@@ -57,11 +57,6 @@ namespace Devin.ResponseWrapper
         /// <returns></returns>
         public IApiResult Error(int code, string message)
         {
-            if (code == 0)
-            {
-                code = ResponseWrapperDefaults.BusinessErrorCode;
-            }
-
             return new ApiResult(code, message);
         }
     }
