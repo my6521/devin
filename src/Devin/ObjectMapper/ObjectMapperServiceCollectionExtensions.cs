@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using Devin.Utitlies;
+using Mapster;
 using MapsterMapper;
 using System.Reflection;
 
@@ -19,6 +20,8 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             // 获取全局映射配置
             var config = TypeAdapterConfig.GlobalSettings;
+            if (assemblies == null || !assemblies.Any())
+                assemblies = RuntimeUtil.AllAssemblies.ToArray();
 
             // 扫描所有继承  IRegister 接口的对象映射配置
             if (assemblies != null && assemblies.Length > 0) config.Scan(assemblies);
