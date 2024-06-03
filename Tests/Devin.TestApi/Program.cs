@@ -13,6 +13,7 @@ namespace Devin.TestApi
             builder.Services.RegisterServicesFromAssembly();
             //统一数据格式
             builder.Services.AddControllers().AddResponseWrapper();
+            builder.Services.AddObjectMapper();
             //版本号管理
             builder.Services.AddApiVersion();
             //添加文档

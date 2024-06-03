@@ -104,6 +104,34 @@ namespace Devin.JwtBearer
         }
 
         /// <summary>
+        /// 读取 Token，不含验证
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <returns></returns>
+        public static JsonWebToken ReadJwtToken(string accessToken)
+        {
+            var tokenHandler = new JsonWebTokenHandler();
+            if (tokenHandler.CanReadToken(accessToken))
+            {
+                return tokenHandler.ReadJsonWebToken(accessToken);
+            }
+
+            return default;
+        }
+
+        /// <summary>
+        /// 读取 Token，不含验证
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <returns></returns>
+        public static JwtSecurityToken SecurityReadJwtToken(string accessToken)
+        {
+            var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = jwtSecurityTokenHandler.ReadJwtToken(accessToken);
+            return jwtSecurityToken;
+        }
+
+        /// <summary>
         /// 验证 Token
         /// </summary>
         /// <param name="accessToken"></param>
