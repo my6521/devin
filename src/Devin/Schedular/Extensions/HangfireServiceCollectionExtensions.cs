@@ -1,4 +1,5 @@
-﻿using Devin.Schedular.Options;
+﻿using Devin.Schedular.Filters;
+using Devin.Schedular.Options;
 using Hangfire;
 using Hangfire.Redis.StackExchange;
 using StackExchange.Redis;
@@ -9,22 +10,25 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddHangfireSetup(this IServiceCollection services, Action<HangfireConfig> configureSetup)
         {
-            var hangfireConfig = new HangfireConfig();
-            configureSetup?.Invoke(hangfireConfig);
-            services.AddSingleton(hangfireConfig);
+            var setting = new HangfireConfig();
+            configureSetup?.Invoke(setting);
+            services.AddSingleton(setting);
 
             services.AddHangfire((sp, config) =>
             {
-                var redis = ConnectionMultiplexer.Connect(hangfireConfig.ConnectionString);
+                var redis = ConnectionMultiplexer.Connect(setting.ConnectionString);
                 config.UseRedisStorage(redis, new RedisStorageOptions
                 {
-                    Db = hangfireConfig.Db,
+                    Db = setting.Db,
                     SucceededListSize = 1000,
                     DeletedListSize = 1000,
-                    Prefix = hangfireConfig.Prefix
+                    Prefix = setting.Prefix
                 });
             });
-
+            if (setting.JobExpirationTimeout > 0)
+            {
+                GlobalStateHandlers.Handlers.Add(new SucceededStateExpireHandler(TimeSpan.FromMinutes(setting.JobExpirationTimeout)));
+            }
             services.AddHangfireServer(options => { });
 
             return services;

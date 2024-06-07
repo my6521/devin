@@ -1,7 +1,6 @@
 ﻿using Devin.Reflection;
 using Devin.Schedular;
 using Devin.Schedular.Attributes;
-using Devin.Schedular.Filters;
 using Devin.Schedular.Options;
 using Devin.Utitlies;
 using Hangfire;
@@ -39,10 +38,6 @@ namespace Microsoft.AspNetCore.Builder
                     })
                 },
             });
-            if (setting.JobExpirationTimeout > 0)
-            {
-                GlobalStateHandlers.Handlers.Add(new SucceededStateExpireHandler(TimeSpan.FromMinutes(setting.JobExpirationTimeout)));
-            }
 
             setup?.Invoke(app.ApplicationServices, setting);
 
