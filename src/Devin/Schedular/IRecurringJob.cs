@@ -2,9 +2,9 @@
 
 namespace Devin.Schedular
 {
-    public interface IAutoJob
+    public interface IRecurringJob
     {
         [AutomaticRetry(Attempts = 0, OnAttemptsExceeded = AttemptsExceededAction.Fail)]
-        Task Execute();
+        Task ExecuteAsync();
     }
 }

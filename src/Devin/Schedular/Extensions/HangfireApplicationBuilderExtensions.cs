@@ -49,7 +49,7 @@ namespace Microsoft.AspNetCore.Builder
             return app;
         }
 
-        public static IApplicationBuilder UseAutoInjectJob<T>(this IApplicationBuilder app) where T : IAutoJob
+        public static IApplicationBuilder UseAutoInjectRecurringJob<T>(this IApplicationBuilder app) where T : IRecurringJob
         {
             var jobTypes = RuntimeUtil.AllTypes.Where(x => x.IsBasedOn<T>() && x.IsClass && !x.IsAbstract);
             foreach (var jobType in jobTypes)
@@ -68,9 +68,9 @@ namespace Microsoft.AspNetCore.Builder
             return app;
         }
 
-        public static void AddOrUpdateJob<T>(string jobId, string cronExpression) where T : IAutoJob
+        public static void AddOrUpdateJob<T>(string jobId, string cronExpression) where T : IRecurringJob
         {
-            RecurringJob.AddOrUpdate<T>(jobId, x => x.Execute(), cronExpression);
+            RecurringJob.AddOrUpdate<T>(jobId, x => x.ExecuteAsync(), cronExpression);
         }
     }
 }
