@@ -1,11 +1,7 @@
-﻿namespace Devin.Schedular.Attributes
-{
-    public enum JobType
-    {
-        RecurringJob,
-        BackgroundJob,
-    }
+﻿using Devin.Schedular.Enums;
 
+namespace Devin.Schedular.Attributes
+{
     [AttributeUsage(AttributeTargets.Class)]
     public class JobMetaAttribute : Attribute
     {

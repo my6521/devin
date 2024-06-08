@@ -1,6 +1,7 @@
 ﻿using Devin.Reflection;
 using Devin.Schedular;
 using Devin.Schedular.Attributes;
+using Devin.Schedular.Enums;
 using Devin.Schedular.Options;
 using Devin.Utitlies;
 using Hangfire;
