@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
         <PackageId>Devin</PackageId>
-        <Version>6.0.0-preview30</Version>
+        <Version>6.0.0-preview31</Version>
         <Authors>Wwb</Authors>
         <Description>NET基础框架</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
