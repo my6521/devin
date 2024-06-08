@@ -89,7 +89,10 @@ namespace Microsoft.AspNetCore.Builder
         public static void AddOrUpdateRecurringJob<T>(string jobId, string cronExpression) where T : IPrivateJob
         {
             var tzi = TZConvert.GetTimeZoneInfo("Asia/Shanghai");
-            RecurringJob.AddOrUpdate<T>(jobId, x => x.ExecuteAsync(), cronExpression, tzi);
+            RecurringJob.AddOrUpdate<T>(jobId, x => x.ExecuteAsync(), cronExpression, new RecurringJobOptions
+            {
+                TimeZone = tzi
+            });
         }
 
         /// <summary>

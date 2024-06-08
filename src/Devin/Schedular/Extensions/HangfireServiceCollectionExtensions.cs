@@ -1,7 +1,7 @@
 ﻿using Devin.Schedular.Filters;
 using Devin.Schedular.Options;
 using Hangfire;
-using Hangfire.Redis;
+using Hangfire.Redis.StackExchange;
 using StackExchange.Redis;
 
 namespace Microsoft.Extensions.DependencyInjection
