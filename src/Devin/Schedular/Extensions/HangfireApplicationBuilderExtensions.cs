@@ -7,6 +7,7 @@ using Hangfire;
 using Hangfire.Dashboard.BasicAuthorization;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using TimeZoneConverter;
 
 namespace Microsoft.AspNetCore.Builder
 {
@@ -44,7 +45,13 @@ namespace Microsoft.AspNetCore.Builder
             return app;
         }
 
-        public static IApplicationBuilder UseAutoInjectRecurringJob<T>(this IApplicationBuilder app) where T : IRecurringJob
+        /// <summary>
+        /// 自动注入后台任务
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="app"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseAutoInjectRecurringJob<T>(this IApplicationBuilder app) where T : IPrivateJob
         {
             var jobTypes = RuntimeUtil.AllTypes.Where(x => x.IsBasedOn<T>() && x.IsClass && !x.IsAbstract);
             foreach (var jobType in jobTypes)
@@ -53,19 +60,48 @@ namespace Microsoft.AspNetCore.Builder
                 if (jobMeta == null) continue;
                 var jobId = jobMeta.JobId ?? jobType.Name;
                 var interfaceType = jobType.GetInterfaces()[0];
-                var configureMethod = typeof(HangfireApplicationBuilderExtensions)
-                    .GetMethod("AddOrUpdateJob", BindingFlags.Public | BindingFlags.Static)
-                    .MakeGenericMethod(interfaceType);
-
-                configureMethod.Invoke(null, new object[] { jobId, jobMeta.CronExpression });
+                if (jobMeta.JobType == JobType.RecurringJob)
+                {
+                    var configureMethod = typeof(HangfireApplicationBuilderExtensions)
+                    .GetMethod("AddOrUpdateRecurringJob", BindingFlags.Public | BindingFlags.Static)
+                    ?.MakeGenericMethod(interfaceType)
+                    ?.Invoke(null, new object[] { jobId, jobMeta.CronExpression });
+                }
+                else if (jobMeta.JobType == JobType.BackgroundJob)
+                {
+                    var configureMethod = typeof(HangfireApplicationBuilderExtensions)
+                    .GetMethod("AddOrUpdateBackgroundJob", BindingFlags.Public | BindingFlags.Static)
+                    ?.MakeGenericMethod(interfaceType)
+                    ?.Invoke(null, new object[] { TimeSpan.FromSeconds(jobMeta.DelaySeconds) });
+                }
             }
 
             return app;
         }
 
-        public static void AddOrUpdateJob<T>(string jobId, string cronExpression) where T : IRecurringJob
+        /// <summary>
+        /// 添加循环任务
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="jobId"></param>
+        /// <param name="cronExpression"></param>
+        public static void AddOrUpdateRecurringJob<T>(string jobId, string cronExpression) where T : IPrivateJob
         {
-            RecurringJob.AddOrUpdate<T>(jobId, x => x.ExecuteAsync(), cronExpression);
+            var tzi = TZConvert.GetTimeZoneInfo("Asia/Shanghai");
+            RecurringJob.AddOrUpdate<T>(jobId, x => x.ExecuteAsync(), cronExpression, new RecurringJobOptions
+            {
+                TimeZone = tzi
+            });
+        }
+
+        /// <summary>
+        /// 添加单次任务
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="delay"></param>
+        public static void AddOrUpdateBackgroundJob<T>(TimeSpan delay) where T : IPrivateJob
+        {
+            BackgroundJob.Schedule<T>(x => x.ExecuteAsync(), delay);
         }
     }
 }

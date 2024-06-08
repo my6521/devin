@@ -2,7 +2,7 @@
 
 namespace Devin.Schedular
 {
-    public interface IRecurringJob
+    public interface IPrivateJob
     {
         [AutomaticRetry(Attempts = 0, OnAttemptsExceeded = AttemptsExceededAction.Fail)]
         Task ExecuteAsync();
