@@ -21,10 +21,10 @@ jobs:
       run: dotnet restore
 
     - name: 构建6.0
-      run: dotnet build --configuration Release --no-restore -f net6.0
+      run: dotnet build Devin.csproj -c Release --no-restore -f net6.0
 
     - name: 构建8.0
-      run: dotnet build --configuration Release --no-restore -f net8.0
+      run: dotnet build Devin.csproj -c Release --no-restore -f net8.0
 
     - name: 打包
       run: dotnet pack
