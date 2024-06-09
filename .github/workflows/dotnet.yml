@@ -26,6 +26,12 @@ jobs:
     - name: 构建8.0
       run: dotnet build ./src/Devin/Devin.csproj -c Release --no-restore -f net8.0
 
+    - name: 构建6.0
+      run: dotnet build ./src/Devin.Extensions.Hangfire/Devin.Extensions.Hangfire.csproj -c Release --no-restore -f net6.0
+
+    - name: 构建8.0
+      run: dotnet build ./src/Devin.Extensions.Hangfire/Devin.Extensions.Hangfire.csproj -c Release --no-restore -f net8.0
+
     - name: 打包
       run: dotnet pack
 
@@ -42,3 +48,5 @@ jobs:
       run: |
         nuget push ./src/Devin/bin/Release/*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }}
         nuget push ./src/Devin/bin/Release/*.nupkg -Source github -SkipDuplicate
+        nuget push ./src/Devin.Extensions.Hangfire/bin/Release/*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }}
+        nuget push ./src/Devin.Extensions.Hangfire/bin/Release/*.nupkg -Source github -SkipDuplicate

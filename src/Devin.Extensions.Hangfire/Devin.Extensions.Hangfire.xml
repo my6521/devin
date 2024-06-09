@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Devin.Extensions.Hangfire</name>
+    </assembly>
+    <members>
+        <member name="T:Devin.Extensions.Hangfire.Attributes.JobMetaAttribute">
+            <summary>
+            任务描述
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Attributes.JobMetaAttribute.EntityId">
+            <summary>
+            初始化实体ID
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Attributes.JobMetaAttribute.JobId">
+            <summary>
+            作业ID
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Attributes.JobMetaAttribute.BackgroudJobType">
+            <summary>
+            任务类型
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Attributes.JobMetaAttribute.CronExpression">
+            <summary>
+            Cron表达式
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Attributes.JobMetaAttribute.Description">
+            <summary>
+            作业描述
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Attributes.JobMetaAttribute.AutoStart">
+            <summary>
+            是否自动启动
+            </summary>
+        </member>
+        <member name="T:Devin.Extensions.Hangfire.Const.JobStatusConst">
+            <summary>
+            作业状态常量
+            </summary>
+        </member>
+        <member name="T:Devin.Extensions.Hangfire.Enums.BackgroudJobType">
+            <summary>
+            作业类型枚举
+            </summary>
+        </member>
+        <member name="F:Devin.Extensions.Hangfire.Enums.BackgroudJobType.RecurringJob">
+            <summary>
+            周期性任务
+            </summary>
+        </member>
+        <member name="F:Devin.Extensions.Hangfire.Enums.BackgroudJobType.BackgroundJob">
+            <summary>
+            后台任务
+            </summary>
+        </member>
+        <member name="T:Devin.Extensions.Hangfire.HangfireJobExtensions">
+            <summary>
+            作业扩展类
+            </summary>
+        </member>
+        <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateRecurringJob``1(System.String,System.String,System.String)">
+            <summary>
+            添加周期性任务
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="queueName"></param>
+            <param name="jobId"></param>
+            <param name="cronExpression"></param>
+        </member>
+        <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateBackgroundJob``1(System.String,System.TimeSpan)">
+            <summary>
+            添加后台任务
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="queueName"></param>
+            <param name="delay"></param>
+        </member>
+        <member name="T:Devin.Extensions.Hangfire.Filters.SucceededStateExpireHandler">
+            <summary>
+            设置超时时间
+            </summary>
+        </member>
+        <member name="T:Devin.Extensions.Hangfire.Internal.IBaseJob">
+            <summary>
+            作业顶级接口
+            </summary>
+        </member>
+        <member name="M:Devin.Extensions.Hangfire.Internal.IBaseJob.ExecuteAsync">
+            <summary>
+            执行任务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Devin.Extensions.Hangfire.Options.HangfireConfig">
+            <summary>
+            Hangfire配置
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.ConnectionString">
+            <summary>
+            连接
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.Db">
+            <summary>
+            Db
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.Prefix">
+            <summary>
+            前缀
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.QueueName">
+            <summary>
+            队列名称,集群情况下，每个主机配置唯一，不能重复
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.UserName">
+            <summary>
+            Dashboard账号
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.Password">
+            <summary>
+            Dashboard密码
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.JobExpirationTimeout">
+            <summary>
+            作业超时时间，单位分钟
+            </summary>
+        </member>
+        <member name="T:Devin.Extensions.Hangfire.Options.JobTypeConfig">
+            <summary>
+            作业程序集配置
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.JobTypeConfig.GlobalSettings">
+            <summary>
+            单列
+            </summary>
+        </member>
+        <member name="M:Devin.Extensions.Hangfire.Options.JobTypeConfig.Scan``1(System.Reflection.Assembly[])">
+            <summary>
+            扫描作业类型
+            </summary>
+            <typeparam name="T">特性标注。一般根据应用自动扫码该特性的作业类型</typeparam>
+            <param name="assemblies"></param>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.JobTypeConfig.JobTypeDic">
+            <summary>
+            获取作业程序集
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.HangfireApplicationBuilderExtensions">
+            <summary>
+            hangfire应用拓展类
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.HangfireApplicationBuilderExtensions.UseHangfireCore(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            hangfire应用面板
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.HangfireServiceCollectionExtensions">
+            <summary>
+            Hangfire服扩展类
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.HangfireServiceCollectionExtensions.AddHangfireCore(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Devin.Extensions.Hangfire.Options.HangfireConfig},System.Action{System.IServiceProvider,Hangfire.IGlobalConfiguration})">
+            <summary>
+            hangfire主要服务配置
+            </summary>
+            <param name="services"></param>
+            <param name="configureSetup"></param>
+            <param name="hangfireConfigSetup"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,5 +1,3 @@
-using Devin.Schedular;
-
 namespace Devin.TestApi
 {
     public class Program
@@ -38,7 +36,7 @@ namespace Devin.TestApi
 
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseHangfireSetup().UseAutoInjectRecurringJob<IPrivateJob>();
+            app.UseHangfireSetup();
             app.MapControllers();
 
             app.Run();

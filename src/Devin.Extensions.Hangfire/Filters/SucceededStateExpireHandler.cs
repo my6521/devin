@@ -1,8 +1,11 @@
 ﻿using Hangfire.States;
 using Hangfire.Storage;
 
-namespace Devin.Schedular.Filters
+namespace Devin.Extensions.Hangfire.Filters
 {
+    /// <summary>
+    /// 设置超时时间
+    /// </summary>
     public class SucceededStateExpireHandler : IStateHandler
     {
         private readonly TimeSpan _jobExpirationTimeout;

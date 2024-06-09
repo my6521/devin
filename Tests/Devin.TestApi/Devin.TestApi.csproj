@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Devin.Extensions.Hangfire\Devin.Extensions.Hangfire.csproj" />
     <ProjectReference Include="..\..\src\Devin\Devin.csproj" />
   </ItemGroup>
 
