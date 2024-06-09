@@ -20,7 +20,6 @@ namespace Devin.TestApi
             builder.Services.AddSwaggerDocuments(x => builder.Configuration.GetSection("Swagger").Bind(x));
             //Ìí¼ÓJWTÊÚÈ¨
             builder.Services.AddJwt(x => builder.Configuration.GetSection("JWT").Bind(x));
-            builder.Services.AddHangfireSetup(x => builder.Configuration.GetSection("Hangfire").Bind(x));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -36,7 +35,6 @@ namespace Devin.TestApi
 
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseHangfireSetup();
             app.MapControllers();
 
             app.Run();

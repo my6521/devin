@@ -12,6 +12,7 @@
         <RepositoryUrl>https://github.com/my6521/devin</RepositoryUrl>
         <PackageProjectUrl>https://github.com/my6521/devin</PackageProjectUrl>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
+        <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
         <DocumentationFile>$(MSBuildProjectName).xml</DocumentationFile>
         
     </PropertyGroup>
