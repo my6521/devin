@@ -22,6 +22,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             var setting = new HangfireConfig();
             configureSetup?.Invoke(setting);
+            setting.Queues ??= new string[] { "default" };
             services.AddSingleton(setting);
 
             services.AddHangfire((sp, config) =>
@@ -40,9 +41,10 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 GlobalStateHandlers.Handlers.Add(new SucceededStateExpireHandler(TimeSpan.FromMinutes(setting.JobExpirationTimeout)));
             }
+
             services.AddHangfireServer(options =>
             {
-                options.Queues = new[] { setting.QueueName };
+                options.Queues = setting.Queues;
             });
 
             return services;

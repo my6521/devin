@@ -9,14 +9,14 @@
             任务描述
             </summary>
         </member>
-        <member name="P:Devin.Extensions.Hangfire.Attributes.JobMetaAttribute.EntityId">
-            <summary>
-            初始化实体ID
-            </summary>
-        </member>
         <member name="P:Devin.Extensions.Hangfire.Attributes.JobMetaAttribute.JobId">
             <summary>
             作业ID
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Attributes.JobMetaAttribute.QueueName">
+            <summary>
+            队列
             </summary>
         </member>
         <member name="P:Devin.Extensions.Hangfire.Attributes.JobMetaAttribute.BackgroudJobType">
@@ -64,21 +64,36 @@
             作业扩展类
             </summary>
         </member>
+        <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateRecurringJob``1(System.String,System.String)">
+            <summary>
+            添加周期性任务
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="jobId"></param>
+            <param name="cronExpression"></param>
+        </member>
         <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateRecurringJob``1(System.String,System.String,System.String)">
             <summary>
             添加周期性任务
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="queueName"></param>
             <param name="jobId"></param>
+            <param name="queue"></param>
             <param name="cronExpression"></param>
+        </member>
+        <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateBackgroundJob``1(System.TimeSpan)">
+            <summary>
+            添加后台任务
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="delay"></param>
         </member>
         <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateBackgroundJob``1(System.String,System.TimeSpan)">
             <summary>
             添加后台任务
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="queueName"></param>
+            <param name="queue"></param>
             <param name="delay"></param>
         </member>
         <member name="T:Devin.Extensions.Hangfire.Filters.SucceededStateExpireHandler">
@@ -117,9 +132,9 @@
             前缀
             </summary>
         </member>
-        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.QueueName">
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.Queues">
             <summary>
-            队列名称,集群情况下，每个主机配置唯一，不能重复
+            队列集合,如果空默认default
             </summary>
         </member>
         <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.UserName">
@@ -147,11 +162,11 @@
             单列
             </summary>
         </member>
-        <member name="M:Devin.Extensions.Hangfire.Options.JobTypeConfig.Scan``1(System.Reflection.Assembly[])">
+        <member name="M:Devin.Extensions.Hangfire.Options.JobTypeConfig.Scan(System.String[],System.Reflection.Assembly[])">
             <summary>
             扫描作业类型
             </summary>
-            <typeparam name="T">特性标注。一般根据应用自动扫码该特性的作业类型</typeparam>
+            <param name="queue"></param>
             <param name="assemblies"></param>
         </member>
         <member name="P:Devin.Extensions.Hangfire.Options.JobTypeConfig.JobTypeDic">

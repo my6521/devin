@@ -9,14 +9,14 @@ namespace Devin.Extensions.Hangfire.Attributes
     public class JobMetaAttribute : Attribute
     {
         /// <summary>
-        /// 初始化实体ID
-        /// </summary>
-        public long EntityId { get; set; }
-
-        /// <summary>
         /// 作业ID
         /// </summary>
         public string JobId { get; set; }
+
+        /// <summary>
+        /// 队列
+        /// </summary>
+        public string QueueName { get; set; }
 
         /// <summary>
         /// 任务类型

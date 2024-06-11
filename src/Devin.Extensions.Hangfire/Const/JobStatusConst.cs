@@ -11,5 +11,6 @@
         public const string Processing = " Processing";
         public const string Succeeded = "Succeeded";
         public const string Failed = "Failed";
+        public const string Deleted = "Deleted";
     }
 }

@@ -21,9 +21,9 @@
         public string Prefix { get; set; }
 
         /// <summary>
-        /// 队列名称,集群情况下，每个主机配置唯一，不能重复
+        /// 队列集合,如果空默认default
         /// </summary>
-        public string QueueName { get; set; } = "default";
+        public string[] Queues { get; set; }
 
         /// <summary>
         /// Dashboard账号

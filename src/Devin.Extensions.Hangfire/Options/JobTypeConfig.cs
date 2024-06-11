@@ -22,19 +22,19 @@ namespace Devin.Extensions.Hangfire.Options
         /// <summary>
         /// 扫描作业类型
         /// </summary>
-        /// <typeparam name="T">特性标注。一般根据应用自动扫码该特性的作业类型</typeparam>
+        /// <param name="queue"></param>
         /// <param name="assemblies"></param>
-        public void Scan<T>(params Assembly[] assemblies) where T : Attribute
+        public void Scan(string[] queue, params Assembly[] assemblies)
         {
             if (!assemblies.Any())
             {
                 assemblies = RuntimeUtil.AllAssemblies.ToArray();
             }
-            var jobTypes = assemblies.SelectMany(x => x.ExportedTypes).Where(x => x.IsBasedOn<IBaseJob>() && x.HasAttribute<T>() && x.IsClass && !x.IsAbstract).ToList();
+            var jobTypes = assemblies.SelectMany(x => x.ExportedTypes).Where(x => x.IsBasedOn<IBaseJob>() && x.HasAttribute<JobMetaAttribute>() && x.IsClass && !x.IsAbstract).ToList();
             foreach (var jobType in jobTypes)
             {
                 var jobMetaAttr = jobType.GetCustomAttribute<JobMetaAttribute>(false);
-                if (jobMetaAttr != null)
+                if (jobMetaAttr != null && queue.Contains(jobMetaAttr.QueueName))
                     _jobTypeDict.TryAdd(jobType, jobMetaAttr);
             }
         }
