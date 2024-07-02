@@ -1,5 +1,6 @@
 ﻿using Devin.Extensions.Hangfire.Filters;
 using Devin.Extensions.Hangfire.Options;
+using Devin.Options.Provider;
 using Hangfire;
 using Hangfire.Redis.StackExchange;
 using StackExchange.Redis;
@@ -11,6 +12,22 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class HangfireServiceCollectionExtensions
     {
+        /// <summary>
+        /// hangfire主要服务配置
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="hangfireConfigSetup"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static IServiceCollection AddHangfireSetup(this IServiceCollection services, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
+        {
+            var setting = OptionsProvider.GetOptions<HangfireConfig>();
+            if (setting == null)
+                throw new ArgumentNullException(nameof(setting));
+
+            return services.AddHangfireSetup(setting, hangfireConfigSetup);
+        }
+
         /// <summary>
         /// hangfire主要服务配置
         /// </summary>

@@ -1,4 +1,5 @@
-﻿using Devin.Swagger.Options;
+﻿using Devin.Options.Provider;
+using Devin.Swagger.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -9,6 +10,29 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class SwaggerServiceCollectionExtensions
     {
+        /// <summary>
+        /// 添加Swagger文档服务
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="setupAction"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static IServiceCollection AddSwaggerSetup(this IServiceCollection services, Action<SwaggerGenOptions> setupAction = default)
+        {
+            var setting = OptionsProvider.GetOptions<SwaggerOptions>();
+            if (setting == null)
+                throw new ArgumentNullException(nameof(setting));
+
+            return services.AddSwaggerSetup(setting, setupAction);
+        }
+
+        /// <summary>
+        /// 添加Swagger文档服务
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configure"></param>
+        /// <param name="setupAction"></param>
+        /// <returns></returns>
         public static IServiceCollection AddSwaggerSetup(this IServiceCollection services, Action<SwaggerOptions> configure, Action<SwaggerGenOptions> setupAction = default)
         {
             var setting = new SwaggerOptions();
@@ -17,6 +41,13 @@ namespace Microsoft.Extensions.DependencyInjection
             return services.AddSwaggerSetup(setting, setupAction);
         }
 
+        /// <summary>
+        /// 添加Swagger文档服务
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="setting"></param>
+        /// <param name="setupAction"></param>
+        /// <returns></returns>
         public static IServiceCollection AddSwaggerSetup(this IServiceCollection services, SwaggerOptions setting, Action<SwaggerGenOptions> setupAction = default)
         {
             services.AddSingleton(setting);

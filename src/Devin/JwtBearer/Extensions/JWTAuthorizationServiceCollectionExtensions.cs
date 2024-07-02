@@ -1,5 +1,6 @@
 ﻿using Devin.JwtBearer;
 using Devin.JwtBearer.Options;
+using Devin.Options.Provider;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -12,6 +13,17 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class JwtAuthorizationServiceCollectionExtensions
     {
+        public static IServiceCollection AddJwt(this IServiceCollection services,
+            Action<AuthenticationOptions> authenticationConfigure = null,
+            Action<JwtBearerOptions> jwtBearerConfigure = null)
+        {
+            var setting = OptionsProvider.GetOptions<JwtSettingsOptions>();
+            if (setting == null)
+                throw new ArgumentNullException(nameof(setting));
+
+            return services.AddJwt(setting, authenticationConfigure, jwtBearerConfigure); ;
+        }
+
         /// <summary>
         /// 添加JWT授权
         /// </summary>
@@ -25,27 +37,27 @@ namespace Microsoft.Extensions.DependencyInjection
             Action<AuthenticationOptions> authenticationConfigure = null,
             Action<JwtBearerOptions> jwtBearerConfigure = null)
         {
-            var jwtSettings = new JwtSettingsOptions();
-            jwtSettingConfiure?.Invoke(jwtSettings);
+            var setting = new JwtSettingsOptions();
+            jwtSettingConfiure?.Invoke(setting);
 
-            return services.AddJwt(jwtSettings, authenticationConfigure, jwtBearerConfigure); ;
+            return services.AddJwt(setting, authenticationConfigure, jwtBearerConfigure); ;
         }
 
         /// <summary>
         /// 添加JWT授权
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="jwtSettings"></param>
+        /// <param name="setting"></param>
         /// <param name="authenticationConfigure"></param>
         /// <param name="jwtBearerConfigure"></param>
         /// <returns></returns>
         public static IServiceCollection AddJwt(this IServiceCollection services,
-            JwtSettingsOptions jwtSettings,
+            JwtSettingsOptions setting,
             Action<AuthenticationOptions> authenticationConfigure = null,
             Action<JwtBearerOptions> jwtBearerConfigure = null)
         {
-            SetDefaultJwtSettings(jwtSettings);
-            services.AddSingleton(jwtSettings);
+            SetDefaultJwtSettings(setting);
+            services.AddSingleton(setting);
 
             services.AddAuthentication(options =>
             {
@@ -59,23 +71,23 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     // 验证签发方密钥
-                    ValidateIssuerSigningKey = jwtSettings.ValidateIssuerSigningKey.Value,
+                    ValidateIssuerSigningKey = setting.ValidateIssuerSigningKey.Value,
                     // 签发方密钥
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.IssuerSigningKey)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(setting.IssuerSigningKey)),
                     // 验证签发方
-                    ValidateIssuer = jwtSettings.ValidateIssuer.Value,
+                    ValidateIssuer = setting.ValidateIssuer.Value,
                     // 设置签发方
-                    ValidIssuer = jwtSettings.ValidIssuer,
+                    ValidIssuer = setting.ValidIssuer,
                     // 验证签收方
-                    ValidateAudience = jwtSettings.ValidateAudience.Value,
+                    ValidateAudience = setting.ValidateAudience.Value,
                     // 设置接收方
-                    ValidAudience = jwtSettings.ValidAudience,
+                    ValidAudience = setting.ValidAudience,
                     // 验证生存期
-                    ValidateLifetime = jwtSettings.ValidateLifetime.Value,
+                    ValidateLifetime = setting.ValidateLifetime.Value,
                     // 过期时间容错值
-                    ClockSkew = TimeSpan.FromSeconds(jwtSettings.ClockSkew.Value),
+                    ClockSkew = TimeSpan.FromSeconds(setting.ClockSkew.Value),
                     // 验证过期时间，设置 false 永不过期
-                    RequireExpirationTime = jwtSettings.RequireExpirationTime
+                    RequireExpirationTime = setting.RequireExpirationTime
                 };
 
                 options.Events = new JwtBearerEvents()

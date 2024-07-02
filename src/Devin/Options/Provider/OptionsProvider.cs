@@ -21,6 +21,11 @@ namespace Devin.Options.Provider
             }
         }
 
+        /// <summary>
+        /// 获取配置
+        /// </summary>
+        /// <typeparam name="T">配置类型</typeparam>
+        /// <returns></returns>
         public static T GetOptions<T>() where T : class, new()
         {
             var type = typeof(T);

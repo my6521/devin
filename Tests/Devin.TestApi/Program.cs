@@ -25,7 +25,7 @@ namespace Devin.TestApi
             //添加文档
             builder.Services.AddSwaggerSetup(x => builder.Configuration.GetSection("Swagger").Bind(x));
             //添加JWT授权
-            builder.Services.AddJwt(x => builder.Configuration.GetSection("JWT").Bind(x));
+            builder.Services.AddJwt(authenticationConfigure: x => builder.Configuration.GetSection("JWT").Bind(x));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
