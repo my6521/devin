@@ -22,8 +22,6 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddHangfireSetup(this IServiceCollection services, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
         {
             var setting = OptionsProvider.GetOptions<HangfireConfig>();
-            if (setting == null)
-                throw new ArgumentNullException(nameof(setting));
 
             return services.AddHangfireSetup(setting, hangfireConfigSetup);
         }
@@ -52,6 +50,9 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         public static IServiceCollection AddHangfireSetup(this IServiceCollection services, HangfireConfig setting, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
         {
+            if (setting == null)
+                throw new ArgumentNullException(nameof(HangfireConfig));
+
             setting.Queues ??= new string[] { "default" };
             services.AddSingleton(setting);
 

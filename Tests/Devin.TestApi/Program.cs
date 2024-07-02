@@ -1,5 +1,4 @@
 using Devin.Options.Provider;
-using Devin.TestApi.Options;
 
 namespace Devin.TestApi
 {
@@ -8,9 +7,7 @@ namespace Devin.TestApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-            var testoptions = OptionsProvider.GetOptions<TestOptions>();
-
+            OptionsProvider.Load(builder.Configuration);
             //添加基础
             builder.Services.AddCore();
             //自动注入所有标注配置
@@ -23,9 +20,9 @@ namespace Devin.TestApi
             //版本号管理
             builder.Services.AddApiVersion();
             //添加文档
-            builder.Services.AddSwaggerSetup(x => builder.Configuration.GetSection("Swagger").Bind(x));
+            builder.Services.AddSwagger();
             //添加JWT授权
-            builder.Services.AddJwt(authenticationConfigure: x => builder.Configuration.GetSection("JWT").Bind(x));
+            builder.Services.AddJwt();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

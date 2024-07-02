@@ -7,11 +7,11 @@ namespace Devin.Options.Provider
     /// <summary>
     /// 配置加载器
     /// </summary>
-    public class OptionsProvider
+    public static class OptionsProvider
     {
         private static IDictionary<Type, object> _map = new Dictionary<Type, object>();
 
-        internal static void Load(IConfiguration configuration)
+        public static void Load(IConfiguration configuration)
         {
             var types = RuntimeUtil.AllTypes.Where(t => t.IsBasedOn<IOptionsLoader>() && !t.IsAbstract).ToList();
             foreach (var type in types)

@@ -14,52 +14,52 @@ namespace Microsoft.Extensions.DependencyInjection
         /// 添加Swagger文档服务
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="setupAction"></param>
+        /// <param name="swaggerGenOptionSetup"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static IServiceCollection AddSwaggerSetup(this IServiceCollection services, Action<SwaggerGenOptions> setupAction = default)
+        public static IServiceCollection AddSwagger(this IServiceCollection services, Action<SwaggerGenOptions> swaggerGenOptionSetup = null)
         {
             var setting = OptionsProvider.GetOptions<SwaggerOptions>();
-            if (setting == null)
-                throw new ArgumentNullException(nameof(setting));
 
-            return services.AddSwaggerSetup(setting, setupAction);
+            return services.AddSwaggerSetup(setting, swaggerGenOptionSetup);
         }
 
         /// <summary>
         /// 添加Swagger文档服务
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="configure"></param>
-        /// <param name="setupAction"></param>
+        /// <param name="swaggerOptionsSetup"></param>
+        /// <param name="swaggerGenOptionsSetup"></param>
         /// <returns></returns>
-        public static IServiceCollection AddSwaggerSetup(this IServiceCollection services, Action<SwaggerOptions> configure, Action<SwaggerGenOptions> setupAction = default)
+        public static IServiceCollection AddSwaggerSetup(this IServiceCollection services, Action<SwaggerOptions> swaggerOptionsSetup, Action<SwaggerGenOptions> swaggerGenOptionsSetup = null)
         {
             var setting = new SwaggerOptions();
-            configure?.Invoke(setting);
+            swaggerOptionsSetup?.Invoke(setting);
 
-            return services.AddSwaggerSetup(setting, setupAction);
+            return services.AddSwaggerSetup(setting, swaggerGenOptionsSetup);
         }
 
         /// <summary>
         /// 添加Swagger文档服务
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="setting"></param>
-        /// <param name="setupAction"></param>
+        /// <param name="swaggerOptions"></param>
+        /// <param name="swaggerGenOptionsSetup"></param>
         /// <returns></returns>
-        public static IServiceCollection AddSwaggerSetup(this IServiceCollection services, SwaggerOptions setting, Action<SwaggerGenOptions> setupAction = default)
+        public static IServiceCollection AddSwaggerSetup(this IServiceCollection services, SwaggerOptions swaggerOptions, Action<SwaggerGenOptions> swaggerGenOptionsSetup = null)
         {
-            services.AddSingleton(setting);
+            if (swaggerOptions == null) throw new ArgumentNullException(nameof(SwaggerOptions));
+
+            services.AddSingleton(swaggerOptions);
 
             services.AddEndpointsApiExplorer();
 
             services.AddSwaggerGen(options =>
             {
                 //分组
-                if (setting.ApiGroups != null)
+                if (swaggerOptions.ApiGroups != null)
                 {
-                    setting.ApiGroups.ForEach(g =>
+                    swaggerOptions.ApiGroups.ForEach(g =>
                     {
                         options.SwaggerDoc(g.Group, new OpenApiInfo
                         {
@@ -70,11 +70,11 @@ namespace Microsoft.Extensions.DependencyInjection
                     });
                     options.DocInclusionPredicate((docName, apiDescription) =>
                     {
-                        if (docName == setting.DefaultGroupName)
+                        if (docName == swaggerOptions.DefaultGroupName)
                         {
                             return string.IsNullOrEmpty(apiDescription.GroupName);
                         }
-                        else if (docName == setting.AllGroupName)
+                        else if (docName == swaggerOptions.AllGroupName)
                         {
                             return true;
                         }
@@ -105,7 +105,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 });
 
                 //外部设置
-                setupAction?.Invoke(options);
+                swaggerGenOptionsSetup?.Invoke(options);
             });
 
             return services;

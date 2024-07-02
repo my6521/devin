@@ -18,8 +18,6 @@ namespace Microsoft.Extensions.DependencyInjection
             Action<JwtBearerOptions> jwtBearerConfigure = null)
         {
             var setting = OptionsProvider.GetOptions<JwtSettingsOptions>();
-            if (setting == null)
-                throw new ArgumentNullException(nameof(setting));
 
             return services.AddJwt(setting, authenticationConfigure, jwtBearerConfigure); ;
         }
@@ -56,6 +54,9 @@ namespace Microsoft.Extensions.DependencyInjection
             Action<AuthenticationOptions> authenticationConfigure = null,
             Action<JwtBearerOptions> jwtBearerConfigure = null)
         {
+            if (setting == null)
+                throw new ArgumentNullException(nameof(setting));
+
             SetDefaultJwtSettings(setting);
             services.AddSingleton(setting);
 
