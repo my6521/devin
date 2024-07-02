@@ -1,5 +1,6 @@
 ﻿using Devin.Extensions.Hangfire.Internal;
 using Hangfire;
+using System.Reflection;
 using TimeZoneConverter;
 
 namespace Devin.Extensions.Hangfire
@@ -9,6 +10,64 @@ namespace Devin.Extensions.Hangfire
     /// </summary>
     public static class HangfireJobExtensions
     {
+        /// <summary>
+        /// 添加周期性任务
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="jobId"></param>
+        /// <param name="cronExpression"></param>
+        public static void AddOrUpdateRecurringJob(this Type type, string jobId, string cronExpression)
+        {
+            typeof(HangfireJobExtensions).GetMethods(BindingFlags.Public | BindingFlags.Static)
+                .Where(x => x.Name == "AddOrUpdateRecurringJob" && x.GetParameters().Length == 2)
+                .FirstOrDefault()
+                ?.MakeGenericMethod(type)
+                ?.Invoke(null, new object[] { jobId, cronExpression });
+        }
+
+        /// <summary>
+        /// 添加周期性任务
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="queue"></param>
+        /// <param name="jobId"></param>
+        /// <param name="cronExpression"></param>
+        public static void AddOrUpdateRecurringJob(this Type type, string jobId, string queue, string cronExpression)
+        {
+            typeof(HangfireJobExtensions).GetMethods(BindingFlags.Public | BindingFlags.Static)
+                .Where(x => x.Name == "AddOrUpdateRecurringJob" && x.GetParameters().Length == 3)
+                .FirstOrDefault()
+                ?.MakeGenericMethod(type)
+                ?.Invoke(null, new object[] { jobId, queue, cronExpression });
+        }
+
+        /// <summary>
+        /// 添加一次性任务
+        /// </summary>
+        /// <param name="type"></param>
+        public static void AddOrUpdateBackgroundJob(this Type type)
+        {
+            typeof(HangfireJobExtensions).GetMethods(BindingFlags.Public | BindingFlags.Static)
+                       .Where(x => x.Name == "AddOrUpdateBackgroundJob" && x.GetParameters().Length == 1)
+                       .FirstOrDefault()
+                       ?.MakeGenericMethod(type)
+                       ?.Invoke(null, new object[] { TimeSpan.FromSeconds(1) });
+        }
+
+        /// <summary>
+        /// 添加一次性任务
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="queue"></param>
+        public static void AddOrUpdateBackgroundJob(this Type type, string queue)
+        {
+            typeof(HangfireJobExtensions).GetMethods(BindingFlags.Public | BindingFlags.Static)
+                       .Where(x => x.Name == "AddOrUpdateBackgroundJob" && x.GetParameters().Length == 2)
+                       .FirstOrDefault()
+                       ?.MakeGenericMethod(type)
+                       ?.Invoke(null, new object[] { queue, TimeSpan.FromSeconds(1) });
+        }
+
         /// <summary>
         /// 添加周期性任务
         /// </summary>

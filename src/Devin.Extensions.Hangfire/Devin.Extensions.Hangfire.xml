@@ -64,6 +64,37 @@
             作业扩展类
             </summary>
         </member>
+        <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateRecurringJob(System.Type,System.String,System.String)">
+            <summary>
+            添加周期性任务
+            </summary>
+            <param name="type"></param>
+            <param name="jobId"></param>
+            <param name="cronExpression"></param>
+        </member>
+        <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateRecurringJob(System.Type,System.String,System.String,System.String)">
+            <summary>
+            添加周期性任务
+            </summary>
+            <param name="type"></param>
+            <param name="queue"></param>
+            <param name="jobId"></param>
+            <param name="cronExpression"></param>
+        </member>
+        <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateBackgroundJob(System.Type)">
+            <summary>
+            添加一次性任务
+            </summary>
+            <param name="type"></param>
+            <param name="queue"></param>
+        </member>
+        <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateBackgroundJob(System.Type,System.String)">
+            <summary>
+            添加一次性任务
+            </summary>
+            <param name="type"></param>
+            <param name="queue"></param>
+        </member>
         <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateRecurringJob``1(System.String,System.String)">
             <summary>
             添加周期性任务
@@ -150,6 +181,11 @@
         <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.JobExpirationTimeout">
             <summary>
             作业超时时间，单位分钟
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.AutoScanAndStart">
+            <summary>
+            是否自动启动
             </summary>
         </member>
         <member name="T:Devin.Extensions.Hangfire.Options.JobTypeConfig">

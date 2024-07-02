@@ -1,4 +1,6 @@
-﻿using Devin.Extensions.Hangfire.Options;
+﻿using Devin.Extensions.Hangfire;
+using Devin.Extensions.Hangfire.Enums;
+using Devin.Extensions.Hangfire.Options;
 using Hangfire;
 using Hangfire.Dashboard.BasicAuthorization;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,7 +45,30 @@ namespace Microsoft.AspNetCore.Builder
                 },
             });
 
+            //自动添加任务需要考虑多个集群重复问题
+            if (setting.AutoScanAndStart)
+                StartJob();
+
             return app;
+        }
+
+        private static void StartJob()
+        {
+            var jobList = JobTypeConfig.GlobalSettings.JobTypeDic.Where(x => x.Value.AutoStart);
+            foreach (var job in jobList)
+            {
+                //先删除
+                RecurringJob.RemoveIfExists(job.Value.JobId);
+
+                if (job.Value.BackgroudJobType == BackgroudJobType.RecurringJob)
+                {
+                    job.Key.AddOrUpdateRecurringJob(job.Value.JobId, job.Value.QueueName, job.Value.CronExpression);
+                }
+                else
+                {
+                    job.Key.AddOrUpdateBackgroundJob(job.Value.QueueName);
+                }
+            }
         }
     }
 }

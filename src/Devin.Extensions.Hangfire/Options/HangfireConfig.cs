@@ -39,5 +39,10 @@
         /// 作业超时时间，单位分钟
         /// </summary>
         public int JobExpirationTimeout { get; set; }
+
+        /// <summary>
+        /// 是否自动启动
+        /// </summary>
+        public bool AutoScanAndStart { get; set; } = true;
     }
 }

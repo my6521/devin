@@ -50,10 +50,15 @@ namespace Microsoft.Extensions.DependencyInjection
                 });
                 hangfireConfigSetup?.Invoke(sp, config);
             });
+
+            //过滤器
+            GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 0, OnAttemptsExceeded = AttemptsExceededAction.Fail });
             if (setting.JobExpirationTimeout > 0)
-            {
                 GlobalStateHandlers.Handlers.Add(new SucceededStateExpireHandler(TimeSpan.FromMinutes(setting.JobExpirationTimeout)));
-            }
+
+            //扫描任务
+            if (setting.AutoScanAndStart)
+                JobTypeConfig.GlobalSettings.Scan(setting.Queues);
 
             services.AddHangfireServer(options =>
             {

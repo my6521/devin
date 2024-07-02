@@ -45,6 +45,7 @@ namespace Microsoft.Extensions.DependencyInjection
             Action<JwtBearerOptions> jwtBearerConfigure = null)
         {
             SetDefaultJwtSettings(jwtSettings);
+            services.AddSingleton(jwtSettings);
 
             services.AddAuthentication(options =>
             {
@@ -89,7 +90,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 jwtBearerConfigure?.Invoke(options);
             });
 
-            services.AddSingleton(jwtSettings);
             services.AddScoped<JwtHandler>();
 
             return services;
