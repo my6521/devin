@@ -19,7 +19,7 @@ namespace Devin.Extensions.Hangfire
         public static void AddOrUpdateRecurringJob(this Type type, string jobId, string cronExpression)
         {
             typeof(HangfireJobExtensions).GetMethods(BindingFlags.Public | BindingFlags.Static)
-                .Where(x => x.Name == "AddOrUpdateRecurringJob" && x.GetParameters().Length == 2)
+                .Where(x => x.Name == "AddOrUpdateRecurringJob" && x.GetParameters().Length == 2 && x.IsGenericMethod)
                 .FirstOrDefault()
                 ?.MakeGenericMethod(type)
                 ?.Invoke(null, new object[] { jobId, cronExpression });
@@ -35,7 +35,7 @@ namespace Devin.Extensions.Hangfire
         public static void AddOrUpdateRecurringJob(this Type type, string jobId, string queue, string cronExpression)
         {
             typeof(HangfireJobExtensions).GetMethods(BindingFlags.Public | BindingFlags.Static)
-                .Where(x => x.Name == "AddOrUpdateRecurringJob" && x.GetParameters().Length == 3)
+                .Where(x => x.Name == "AddOrUpdateRecurringJob" && x.GetParameters().Length == 3 && x.IsGenericMethod)
                 .FirstOrDefault()
                 ?.MakeGenericMethod(type)
                 ?.Invoke(null, new object[] { jobId, queue, cronExpression });
@@ -48,7 +48,7 @@ namespace Devin.Extensions.Hangfire
         public static void AddOrUpdateBackgroundJob(this Type type)
         {
             typeof(HangfireJobExtensions).GetMethods(BindingFlags.Public | BindingFlags.Static)
-                       .Where(x => x.Name == "AddOrUpdateBackgroundJob" && x.GetParameters().Length == 1)
+                       .Where(x => x.Name == "AddOrUpdateBackgroundJob" && x.GetParameters().Length == 1 && x.IsGenericMethod)
                        .FirstOrDefault()
                        ?.MakeGenericMethod(type)
                        ?.Invoke(null, new object[] { TimeSpan.FromSeconds(1) });
@@ -62,7 +62,7 @@ namespace Devin.Extensions.Hangfire
         public static void AddOrUpdateBackgroundJob(this Type type, string queue)
         {
             typeof(HangfireJobExtensions).GetMethods(BindingFlags.Public | BindingFlags.Static)
-                       .Where(x => x.Name == "AddOrUpdateBackgroundJob" && x.GetParameters().Length == 2)
+                       .Where(x => x.Name == "AddOrUpdateBackgroundJob" && x.GetParameters().Length == 2 && x.IsGenericMethod)
                        .FirstOrDefault()
                        ?.MakeGenericMethod(type)
                        ?.Invoke(null, new object[] { queue, TimeSpan.FromSeconds(1) });

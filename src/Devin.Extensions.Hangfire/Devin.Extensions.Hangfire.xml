@@ -86,7 +86,6 @@
             添加一次性任务
             </summary>
             <param name="type"></param>
-            <param name="queue"></param>
         </member>
         <member name="M:Devin.Extensions.Hangfire.HangfireJobExtensions.AddOrUpdateBackgroundJob(System.Type,System.String)">
             <summary>
