@@ -5,7 +5,7 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 namespace Devin.SwaggerDocument.Options
 {
     [IgnoreOptionInjection]
-    public class SwaggerDocumentSettingsOptions
+    public class SwaggerOptions
     {
         public string DocumentTitle { get; set; }
         public DocExpansion DocExpansionState { get; set; }

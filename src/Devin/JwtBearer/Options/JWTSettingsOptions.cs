@@ -6,7 +6,7 @@ namespace Devin.JwtBearer.Options
     ///
     /// </summary>
     [IgnoreOptionInjection]
-    public class JWTSettingsOptions
+    public class JwtSettingsOptions
     {
         /// <summary>
         /// 验证签发方密钥

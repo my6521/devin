@@ -15,7 +15,10 @@ namespace Devin.ResponseWrapper.Middlewares
         private readonly IApiResult _apiResult;
         private readonly IOptions<MvcNewtonsoftJsonOptions> _mvcJsonOptions;
 
-        public GlobalExceptionMiddleware(RequestDelegate next, ILogger<GlobalExceptionMiddleware> logger, IOptions<ResponseWrapperOptions> responseWrapperOptions, IOptions<MvcNewtonsoftJsonOptions> mvcJsonOptions)
+        public GlobalExceptionMiddleware(RequestDelegate next,
+            ILogger<GlobalExceptionMiddleware> logger,
+            IOptions<ResponseWrapperOptions> responseWrapperOptions,
+            IOptions<MvcNewtonsoftJsonOptions> mvcJsonOptions)
         {
             _next = next;
             _logger = logger;

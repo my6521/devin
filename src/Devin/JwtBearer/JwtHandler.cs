@@ -16,13 +16,13 @@ namespace Devin.JwtBearer
     public class JwtHandler
     {
         private static readonly string[] _refreshTokenClaims = new[] { "f", "e", "s", "l", "k" };
-        private readonly JWTSettingsOptions _jwtSettings;
+        private readonly JwtSettingsOptions _jwtSettings;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="jwtSettings"></param>
-        public JwtHandler(JWTSettingsOptions jwtSettings)
+        public JwtHandler(JwtSettingsOptions jwtSettings)
         {
             _jwtSettings = jwtSettings;
         }
@@ -197,7 +197,7 @@ namespace Devin.JwtBearer
         /// <param name="payload"></param>
         /// <param name="expiredTime">过期时间，单位：分钟，最大支持 13 年</param>
         /// <returns></returns>
-        private (IDictionary<string, object> Payload, JWTSettingsOptions JWTSettings) CombinePayload(IDictionary<string, object> payload, long? expiredTime = null)
+        private (IDictionary<string, object> Payload, JwtSettingsOptions JWTSettings) CombinePayload(IDictionary<string, object> payload, long? expiredTime = null)
         {
             var datetimeOffset = DateTimeOffset.UtcNow;
 

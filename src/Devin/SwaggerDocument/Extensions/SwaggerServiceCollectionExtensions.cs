@@ -7,14 +7,19 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// Swagger拓展
     /// </summary>
-    public static class SwaggerDocumentServiceCollectionExtensions
+    public static class SwaggerServiceCollectionExtensions
     {
-        public static IServiceCollection AddSwaggerDocuments(this IServiceCollection services, Action<SwaggerDocumentSettingsOptions> configure = default, Action<SwaggerGenOptions> setupAction = default)
+        public static IServiceCollection AddSwaggerDoc(this IServiceCollection services, Action<SwaggerOptions> configure, Action<SwaggerGenOptions> setupAction = default)
         {
-            var setting = new SwaggerDocumentSettingsOptions();
+            var setting = new SwaggerOptions();
             configure?.Invoke(setting);
 
-            services.Configure(configure);
+            return services.AddSwaggerDoc(setting, setupAction);
+        }
+
+        public static IServiceCollection AddSwaggerDoc(this IServiceCollection services, SwaggerOptions setting, Action<SwaggerGenOptions> setupAction = default)
+        {
+            services.AddSingleton(setting);
 
             services.AddEndpointsApiExplorer();
 
@@ -48,6 +53,25 @@ namespace Microsoft.Extensions.DependencyInjection
                         }
                     });
                 }
+
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "请输入带有Bearer的Token",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                });
+
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference {Type = ReferenceType.SecurityScheme, Id = "Bearer"}
+                        },
+                        new List<string>()
+                    }
+                });
 
                 //外部设置
                 setupAction?.Invoke(options);

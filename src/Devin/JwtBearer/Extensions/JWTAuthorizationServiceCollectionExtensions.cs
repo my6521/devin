@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// JWT授权服务拓展类
     /// </summary>
-    public static class JWTAuthorizationServiceCollectionExtensions
+    public static class JwtAuthorizationServiceCollectionExtensions
     {
         /// <summary>
         /// 添加JWT授权
@@ -20,10 +20,30 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="authenticationConfigure"></param>
         /// <param name="jwtBearerConfigure"></param>
         /// <returns></returns>
-        public static IServiceCollection AddJwt(this IServiceCollection services, Action<JWTSettingsOptions> jwtSettingConfiure, Action<AuthenticationOptions> authenticationConfigure = null, Action<JwtBearerOptions> jwtBearerConfigure = null)
+        public static IServiceCollection AddJwt(this IServiceCollection services,
+            Action<JwtSettingsOptions> jwtSettingConfiure,
+            Action<AuthenticationOptions> authenticationConfigure = null,
+            Action<JwtBearerOptions> jwtBearerConfigure = null)
         {
-            var jwtSettings = new JWTSettingsOptions();
+            var jwtSettings = new JwtSettingsOptions();
             jwtSettingConfiure?.Invoke(jwtSettings);
+
+            return services.AddJwt(jwtSettings, authenticationConfigure, jwtBearerConfigure); ;
+        }
+
+        /// <summary>
+        /// 添加JWT授权
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="jwtSettings"></param>
+        /// <param name="authenticationConfigure"></param>
+        /// <param name="jwtBearerConfigure"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddJwt(this IServiceCollection services,
+            JwtSettingsOptions jwtSettings,
+            Action<AuthenticationOptions> authenticationConfigure = null,
+            Action<JwtBearerOptions> jwtBearerConfigure = null)
+        {
             SetDefaultJwtSettings(jwtSettings);
 
             services.AddAuthentication(options =>
@@ -75,7 +95,7 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        internal static JWTSettingsOptions SetDefaultJwtSettings(JWTSettingsOptions options)
+        internal static JwtSettingsOptions SetDefaultJwtSettings(JwtSettingsOptions options)
         {
             options.ValidateIssuerSigningKey ??= true;
             if (options.ValidateIssuerSigningKey == true)

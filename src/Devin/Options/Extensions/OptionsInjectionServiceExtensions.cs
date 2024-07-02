@@ -27,19 +27,29 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        private static void ConfigureOptions(this IServiceCollection services, IConfiguration configuration, Type[] types)
+        public static IServiceCollection ConfigureOptions(this IServiceCollection services, IConfiguration configuration, Type[] types)
         {
             foreach (var type in types)
             {
-                var key = type.GetOptionsKey();
-
-                var configureMethod = typeof(OptionsConfigurationServiceCollectionExtensions)
-                    .GetMethods(BindingFlags.Public | BindingFlags.Static)
-                    .First(m => m.Name == "Configure" && m.GetParameters().Length == 2)
-                    .MakeGenericMethod(type);
-
-                configureMethod.Invoke(null, new object[] { services, configuration.GetSection(key) });
+                services.ConfigureOptions(configuration, type);
             }
+
+            return services;
+        }
+
+        public static IServiceCollection ConfigureOptions(this IServiceCollection services, IConfiguration configuration, Type type)
+        {
+            var key = type.GetCustomAttribute<OptionsMetaAttribute>()?.Key ?? type.Name;
+            if (string.IsNullOrEmpty(key)) throw new ArgumentNullException(nameof(key));
+
+            var configureMethod = typeof(OptionsConfigurationServiceCollectionExtensions)
+                .GetMethods(BindingFlags.Public | BindingFlags.Static)
+                .First(m => m.Name == "Configure" && m.GetParameters().Length == 2)
+                .MakeGenericMethod(type);
+
+            configureMethod.Invoke(null, new object[] { services, configuration.GetSection(key) });
+
+            return services;
         }
     }
 }
