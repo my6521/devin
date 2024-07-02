@@ -18,12 +18,12 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="configureSetup"></param>
         /// <param name="hangfireConfigSetup"></param>
         /// <returns></returns>
-        public static IServiceCollection AddHangfireCore(this IServiceCollection services, Action<HangfireConfig> configureSetup, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
+        public static IServiceCollection AddHangfireSetup(this IServiceCollection services, Action<HangfireConfig> configureSetup, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
         {
             var setting = new HangfireConfig();
             configureSetup?.Invoke(setting);
 
-            return services.AddHangfireCore(setting, hangfireConfigSetup);
+            return services.AddHangfireSetup(setting, hangfireConfigSetup);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="setting"></param>
         /// <param name="hangfireConfigSetup"></param>
         /// <returns></returns>
-        public static IServiceCollection AddHangfireCore(this IServiceCollection services, HangfireConfig setting, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
+        public static IServiceCollection AddHangfireSetup(this IServiceCollection services, HangfireConfig setting, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
         {
             setting.Queues ??= new string[] { "default" };
             services.AddSingleton(setting);

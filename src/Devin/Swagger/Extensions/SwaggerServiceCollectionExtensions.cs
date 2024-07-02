@@ -1,4 +1,4 @@
-﻿using Devin.SwaggerDocument.Options;
+﻿using Devin.Swagger.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -9,15 +9,15 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class SwaggerServiceCollectionExtensions
     {
-        public static IServiceCollection AddSwaggerDoc(this IServiceCollection services, Action<SwaggerOptions> configure, Action<SwaggerGenOptions> setupAction = default)
+        public static IServiceCollection AddSwaggerSetup(this IServiceCollection services, Action<SwaggerOptions> configure, Action<SwaggerGenOptions> setupAction = default)
         {
             var setting = new SwaggerOptions();
             configure?.Invoke(setting);
 
-            return services.AddSwaggerDoc(setting, setupAction);
+            return services.AddSwaggerSetup(setting, setupAction);
         }
 
-        public static IServiceCollection AddSwaggerDoc(this IServiceCollection services, SwaggerOptions setting, Action<SwaggerGenOptions> setupAction = default)
+        public static IServiceCollection AddSwaggerSetup(this IServiceCollection services, SwaggerOptions setting, Action<SwaggerGenOptions> setupAction = default)
         {
             services.AddSingleton(setting);
 

@@ -18,7 +18,7 @@ namespace Microsoft.AspNetCore.Builder
         /// <param name="app"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static IApplicationBuilder UseHangfireCore(this IApplicationBuilder app)
+        public static IApplicationBuilder UseHangfireSetup(this IApplicationBuilder app)
         {
             var setting = app.ApplicationServices.GetService<HangfireConfig>();
             if (setting == null) throw new ArgumentNullException(nameof(setting));

@@ -214,7 +214,7 @@
             hangfire应用拓展类
             </summary>
         </member>
-        <member name="M:Microsoft.AspNetCore.Builder.HangfireApplicationBuilderExtensions.UseHangfireCore(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+        <member name="M:Microsoft.AspNetCore.Builder.HangfireApplicationBuilderExtensions.UseHangfireSetup(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             hangfire应用面板
             </summary>
@@ -227,7 +227,7 @@
             Hangfire服扩展类
             </summary>
         </member>
-        <member name="M:Microsoft.Extensions.DependencyInjection.HangfireServiceCollectionExtensions.AddHangfireCore(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Devin.Extensions.Hangfire.Options.HangfireConfig},System.Action{System.IServiceProvider,Hangfire.IGlobalConfiguration})">
+        <member name="M:Microsoft.Extensions.DependencyInjection.HangfireServiceCollectionExtensions.AddHangfireSetup(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Devin.Extensions.Hangfire.Options.HangfireConfig},System.Action{System.IServiceProvider,Hangfire.IGlobalConfiguration})">
             <summary>
             hangfire主要服务配置
             </summary>
@@ -236,7 +236,7 @@
             <param name="hangfireConfigSetup"></param>
             <returns></returns>
         </member>
-        <member name="M:Microsoft.Extensions.DependencyInjection.HangfireServiceCollectionExtensions.AddHangfireCore(Microsoft.Extensions.DependencyInjection.IServiceCollection,Devin.Extensions.Hangfire.Options.HangfireConfig,System.Action{System.IServiceProvider,Hangfire.IGlobalConfiguration})">
+        <member name="M:Microsoft.Extensions.DependencyInjection.HangfireServiceCollectionExtensions.AddHangfireSetup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Devin.Extensions.Hangfire.Options.HangfireConfig,System.Action{System.IServiceProvider,Hangfire.IGlobalConfiguration})">
             <summary>
             hangfire主要服务配置
             </summary>

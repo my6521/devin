@@ -1,6 +1,6 @@
 ﻿using Devin.JwtBearer;
 using Devin.ResponseWrapper.Attributes;
-using Devin.SwaggerDocument.Internal;
+using Devin.Swagger.Internal;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Devin.TestApi.Controllers

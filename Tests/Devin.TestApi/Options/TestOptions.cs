@@ -1,8 +1,6 @@
-﻿using Devin.Options;
-
-namespace Devin.TestApi.Options
+﻿namespace Devin.TestApi.Options
 {
-    public class TestOptions : IOptionAutoInject
+    public class TestOptions
     {
         public string Name { get; set; }
     }

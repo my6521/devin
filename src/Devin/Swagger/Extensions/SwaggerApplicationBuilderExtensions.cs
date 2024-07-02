@@ -1,5 +1,5 @@
-﻿using Devin.SwaggerDocument.Internal;
-using Devin.SwaggerDocument.Options;
+﻿using Devin.Swagger.Internal;
+using Devin.Swagger.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Text;
@@ -8,7 +8,7 @@ namespace Microsoft.AspNetCore.Builder
 {
     public static class SwaggerApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UseSwaggerDocuments(this IApplicationBuilder app, Action<SwaggerUIOptions> setup = default)
+        public static IApplicationBuilder UseSwaggerSetup(this IApplicationBuilder app, Action<SwaggerUIOptions> setup = default)
         {
             //获取配置
             var settings = app.ApplicationServices.GetService<SwaggerOptions>();
@@ -41,7 +41,7 @@ namespace Microsoft.AspNetCore.Builder
         private static SwaggerUIOptions AddSwaggerAuth(this SwaggerUIOptions swaggerUIOptions, SwaggerLoginInfo loginInfo)
         {
             var thisAssembly = typeof(SwaggerApplicationBuilderExtensions).Assembly;
-            var customIndex = "Devin.SwaggerDocument.Assets.index.html";
+            var customIndex = "Devin.Swagger.Assets.index.html";
             swaggerUIOptions.IndexStream = () =>
             {
                 using (var stream = thisAssembly.GetManifestResourceStream(customIndex))

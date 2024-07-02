@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Devin.SwaggerDocument.Internal
+namespace Devin.Swagger.Internal
 {
     public class SwaggerAuth
     {

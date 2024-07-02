@@ -1,4 +1,4 @@
-﻿namespace Devin.SwaggerDocument.Internal
+﻿namespace Devin.Swagger.Internal
 {
     public sealed class SwaggerLoginInfo
     {

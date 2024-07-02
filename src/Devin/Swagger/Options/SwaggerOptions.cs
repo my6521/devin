@@ -1,8 +1,8 @@
 ﻿using Devin.Options.Attributes;
-using Devin.SwaggerDocument.Internal;
+using Devin.Swagger.Internal;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace Devin.SwaggerDocument.Options
+namespace Devin.Swagger.Options
 {
     [IgnoreOptionInjection]
     public class SwaggerOptions

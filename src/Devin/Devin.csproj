@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
         <PackageId>Devin</PackageId>
-        <Version>1.0.10</Version>
+        <Version>1.0.11</Version>
         <Authors>Wwb</Authors>
         <Description>NET基础框架</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -31,7 +31,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="SwaggerDocument\Assets\index.html" />
+        <EmbeddedResource Include="Swagger\Assets\index.html" />
     </ItemGroup>
 
     <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
