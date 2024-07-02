@@ -22,6 +22,19 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             var setting = new HangfireConfig();
             configureSetup?.Invoke(setting);
+
+            return services.AddHangfireCore(setting, hangfireConfigSetup);
+        }
+
+        /// <summary>
+        /// hangfire主要服务配置
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="setting"></param>
+        /// <param name="hangfireConfigSetup"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddHangfireCore(this IServiceCollection services, HangfireConfig setting, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
+        {
             setting.Queues ??= new string[] { "default" };
             services.AddSingleton(setting);
 

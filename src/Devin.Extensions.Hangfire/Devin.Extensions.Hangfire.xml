@@ -201,5 +201,14 @@
             <param name="hangfireConfigSetup"></param>
             <returns></returns>
         </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.HangfireServiceCollectionExtensions.AddHangfireCore(Microsoft.Extensions.DependencyInjection.IServiceCollection,Devin.Extensions.Hangfire.Options.HangfireConfig,System.Action{System.IServiceProvider,Hangfire.IGlobalConfiguration})">
+            <summary>
+            hangfire主要服务配置
+            </summary>
+            <param name="services"></param>
+            <param name="setting"></param>
+            <param name="hangfireConfigSetup"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
