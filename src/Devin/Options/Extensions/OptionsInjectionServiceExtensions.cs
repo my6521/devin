@@ -1,5 +1,6 @@
 ﻿using Devin.Options;
 using Devin.Options.Attributes;
+using Devin.Options.Provider;
 using Devin.Reflection;
 using Devin.Utitlies;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 .ToArray();
 
             services.ConfigureOptions(configuration, allTypes);
+
+            OptionsProvider.Load(configuration);
 
             return services;
         }

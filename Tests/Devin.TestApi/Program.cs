@@ -1,5 +1,3 @@
-using Devin.Options.Provider;
-
 namespace Devin.TestApi
 {
     public class Program
@@ -7,7 +5,7 @@ namespace Devin.TestApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            OptionsProvider.Load(builder.Configuration);
+
             //添加基础
             builder.Services.AddCore();
             //自动注入所有标注配置
