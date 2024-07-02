@@ -11,7 +11,7 @@ namespace Devin.ResponseWrapper
         /// <summary>
         /// 返回数据
         /// </summary>
-        public TResponse Result { get; set; }
+        public TResponse Data { get; set; }
 
         /// <summary>
         /// 构造函数
@@ -28,7 +28,7 @@ namespace Devin.ResponseWrapper
         /// <param name="response">返回数据</param>
         private ApiResult(int code, string message, TResponse response) : base(code, message)
         {
-            Result = response;
+            Data = response;
         }
 
         /// <summary>
