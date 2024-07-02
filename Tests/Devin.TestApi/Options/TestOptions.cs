@@ -1,6 +1,8 @@
-﻿namespace Devin.TestApi.Options
+﻿using Devin.Options;
+
+namespace Devin.TestApi.Options
 {
-    public class TestOptions
+    public class TestOptions : IOptionsInit
     {
         public string Name { get; set; }
     }

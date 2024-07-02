@@ -1,9 +1,11 @@
-﻿namespace Devin.Extensions.Hangfire.Options
+﻿using Devin.Options;
+
+namespace Devin.Extensions.Hangfire.Options
 {
     /// <summary>
     /// Hangfire配置
     /// </summary>
-    public class HangfireConfig
+    public class HangfireOptions : IOptionsInit
     {
         /// <summary>
         /// 连接

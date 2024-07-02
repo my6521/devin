@@ -1,12 +1,11 @@
-﻿using Devin.Options.Attributes;
+﻿using Devin.Options;
 
 namespace Devin.JwtBearer.Options
 {
     /// <summary>
-    ///
+    /// Jwt配置
     /// </summary>
-    [IgnoreOptionInjection]
-    public class JwtSettingsOptions
+    public class JwtOptions : IOptionsInit
     {
         /// <summary>
         /// 验证签发方密钥

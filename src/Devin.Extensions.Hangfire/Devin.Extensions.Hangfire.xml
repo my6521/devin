@@ -142,51 +142,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:Devin.Extensions.Hangfire.Options.HangfireConfig">
-            <summary>
-            Hangfire配置
-            </summary>
-        </member>
-        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.ConnectionString">
-            <summary>
-            连接
-            </summary>
-        </member>
-        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.Db">
-            <summary>
-            Db
-            </summary>
-        </member>
-        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.Prefix">
-            <summary>
-            前缀
-            </summary>
-        </member>
-        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.Queues">
-            <summary>
-            队列集合,如果空默认default
-            </summary>
-        </member>
-        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.UserName">
-            <summary>
-            Dashboard账号
-            </summary>
-        </member>
-        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.Password">
-            <summary>
-            Dashboard密码
-            </summary>
-        </member>
-        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.JobExpirationTimeout">
-            <summary>
-            作业超时时间，单位分钟
-            </summary>
-        </member>
-        <member name="P:Devin.Extensions.Hangfire.Options.HangfireConfig.AutoScanAndStart">
-            <summary>
-            是否自动启动
-            </summary>
-        </member>
         <member name="T:Devin.Extensions.Hangfire.Options.JobTypeConfig">
             <summary>
             作业程序集配置
@@ -207,6 +162,51 @@
         <member name="P:Devin.Extensions.Hangfire.Options.JobTypeConfig.JobTypeDic">
             <summary>
             获取作业程序集
+            </summary>
+        </member>
+        <member name="T:Devin.Extensions.Hangfire.Options.HangfireOptions">
+            <summary>
+            Hangfire配置
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireOptions.ConnectionString">
+            <summary>
+            连接
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireOptions.Db">
+            <summary>
+            Db
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireOptions.Prefix">
+            <summary>
+            前缀
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireOptions.Queues">
+            <summary>
+            队列集合,如果空默认default
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireOptions.UserName">
+            <summary>
+            Dashboard账号
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireOptions.Password">
+            <summary>
+            Dashboard密码
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireOptions.JobExpirationTimeout">
+            <summary>
+            作业超时时间，单位分钟
+            </summary>
+        </member>
+        <member name="P:Devin.Extensions.Hangfire.Options.HangfireOptions.AutoScanAndStart">
+            <summary>
+            是否自动启动
             </summary>
         </member>
         <member name="T:Microsoft.AspNetCore.Builder.HangfireApplicationBuilderExtensions">
@@ -236,7 +236,7 @@
             <returns></returns>
             <exception cref="T:System.ArgumentNullException"></exception>
         </member>
-        <member name="M:Microsoft.Extensions.DependencyInjection.HangfireServiceCollectionExtensions.AddHangfireSetup(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Devin.Extensions.Hangfire.Options.HangfireConfig},System.Action{System.IServiceProvider,Hangfire.IGlobalConfiguration})">
+        <member name="M:Microsoft.Extensions.DependencyInjection.HangfireServiceCollectionExtensions.AddHangfireSetup(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Devin.Extensions.Hangfire.Options.HangfireOptions},System.Action{System.IServiceProvider,Hangfire.IGlobalConfiguration})">
             <summary>
             hangfire主要服务配置
             </summary>
@@ -245,7 +245,7 @@
             <param name="hangfireConfigSetup"></param>
             <returns></returns>
         </member>
-        <member name="M:Microsoft.Extensions.DependencyInjection.HangfireServiceCollectionExtensions.AddHangfireSetup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Devin.Extensions.Hangfire.Options.HangfireConfig,System.Action{System.IServiceProvider,Hangfire.IGlobalConfiguration})">
+        <member name="M:Microsoft.Extensions.DependencyInjection.HangfireServiceCollectionExtensions.AddHangfireSetup(Microsoft.Extensions.DependencyInjection.IServiceCollection,Devin.Extensions.Hangfire.Options.HangfireOptions,System.Action{System.IServiceProvider,Hangfire.IGlobalConfiguration})">
             <summary>
             hangfire主要服务配置
             </summary>

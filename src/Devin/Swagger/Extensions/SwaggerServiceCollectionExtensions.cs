@@ -1,4 +1,4 @@
-﻿using Devin.Options.Provider;
+﻿using Devin.Options;
 using Devin.Swagger.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -19,7 +19,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <exception cref="ArgumentNullException"></exception>
         public static IServiceCollection AddSwagger(this IServiceCollection services, Action<SwaggerGenOptions> swaggerGenOptionSetup = null)
         {
-            var setting = OptionsProvider.GetOptions<SwaggerOptions>();
+            var setting = OptionsContainer.GetOptions<SwaggerOptions>();
 
             return services.AddSwaggerSetup(setting, swaggerGenOptionSetup);
         }

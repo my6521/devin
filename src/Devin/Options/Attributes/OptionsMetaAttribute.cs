@@ -3,7 +3,7 @@
     /// <summary>
     /// 配置自动注入配置标注
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Class)]
     public class OptionsMetaAttribute : Attribute
     {
         public OptionsMetaAttribute(string key)

@@ -1,6 +1,6 @@
 ﻿using Devin.JwtBearer;
 using Devin.JwtBearer.Options;
-using Devin.Options.Provider;
+using Devin.Options;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -17,7 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
             Action<AuthenticationOptions> authenticationConfigure = null,
             Action<JwtBearerOptions> jwtBearerConfigure = null)
         {
-            var setting = OptionsProvider.GetOptions<JwtSettingsOptions>();
+            var setting = OptionsContainer.GetOptions<JwtOptions>();
 
             return services.AddJwt(setting, authenticationConfigure, jwtBearerConfigure); ;
         }
@@ -31,11 +31,11 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="jwtBearerConfigure"></param>
         /// <returns></returns>
         public static IServiceCollection AddJwt(this IServiceCollection services,
-            Action<JwtSettingsOptions> jwtSettingConfiure,
+            Action<JwtOptions> jwtSettingConfiure,
             Action<AuthenticationOptions> authenticationConfigure = null,
             Action<JwtBearerOptions> jwtBearerConfigure = null)
         {
-            var setting = new JwtSettingsOptions();
+            var setting = new JwtOptions();
             jwtSettingConfiure?.Invoke(setting);
 
             return services.AddJwt(setting, authenticationConfigure, jwtBearerConfigure); ;
@@ -50,7 +50,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="jwtBearerConfigure"></param>
         /// <returns></returns>
         public static IServiceCollection AddJwt(this IServiceCollection services,
-            JwtSettingsOptions setting,
+            JwtOptions setting,
             Action<AuthenticationOptions> authenticationConfigure = null,
             Action<JwtBearerOptions> jwtBearerConfigure = null)
         {
@@ -108,7 +108,7 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        internal static JwtSettingsOptions SetDefaultJwtSettings(JwtSettingsOptions options)
+        internal static JwtOptions SetDefaultJwtSettings(JwtOptions options)
         {
             options.ValidateIssuerSigningKey ??= true;
             if (options.ValidateIssuerSigningKey == true)

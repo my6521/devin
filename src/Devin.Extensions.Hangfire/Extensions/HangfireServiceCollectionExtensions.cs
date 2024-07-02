@@ -1,6 +1,6 @@
 ﻿using Devin.Extensions.Hangfire.Filters;
 using Devin.Extensions.Hangfire.Options;
-using Devin.Options.Provider;
+using Devin.Options;
 using Hangfire;
 using Hangfire.Redis.StackExchange;
 using StackExchange.Redis;
@@ -21,7 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <exception cref="ArgumentNullException"></exception>
         public static IServiceCollection AddHangfireSetup(this IServiceCollection services, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
         {
-            var setting = OptionsProvider.GetOptions<HangfireConfig>();
+            var setting = OptionsContainer.GetOptions<HangfireOptions>();
 
             return services.AddHangfireSetup(setting, hangfireConfigSetup);
         }
@@ -33,9 +33,9 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="configureSetup"></param>
         /// <param name="hangfireConfigSetup"></param>
         /// <returns></returns>
-        public static IServiceCollection AddHangfireSetup(this IServiceCollection services, Action<HangfireConfig> configureSetup, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
+        public static IServiceCollection AddHangfireSetup(this IServiceCollection services, Action<HangfireOptions> configureSetup, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
         {
-            var setting = new HangfireConfig();
+            var setting = new HangfireOptions();
             configureSetup?.Invoke(setting);
 
             return services.AddHangfireSetup(setting, hangfireConfigSetup);
@@ -48,10 +48,10 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="setting"></param>
         /// <param name="hangfireConfigSetup"></param>
         /// <returns></returns>
-        public static IServiceCollection AddHangfireSetup(this IServiceCollection services, HangfireConfig setting, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
+        public static IServiceCollection AddHangfireSetup(this IServiceCollection services, HangfireOptions setting, Action<IServiceProvider, IGlobalConfiguration>? hangfireConfigSetup = default)
         {
             if (setting == null)
-                throw new ArgumentNullException(nameof(HangfireConfig));
+                throw new ArgumentNullException(nameof(HangfireOptions));
 
             setting.Queues ??= new string[] { "default" };
             services.AddSingleton(setting);

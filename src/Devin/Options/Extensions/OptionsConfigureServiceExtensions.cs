@@ -1,6 +1,5 @@
 ﻿using Devin.Options;
 using Devin.Options.Attributes;
-using Devin.Options.Provider;
 using Devin.Reflection;
 using Devin.Utitlies;
 using Microsoft.Extensions.Configuration;
@@ -11,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// 配置注册拓展类
     /// </summary>
-    public static class OptionsInjectionServiceExtensions
+    public static class OptionsConfigureServiceExtensions
     {
         public static IServiceCollection AddOptionsSetup(this IServiceCollection services, IConfiguration configuration)
         {
@@ -20,12 +19,12 @@ namespace Microsoft.Extensions.DependencyInjection
             var allAssemblies = RuntimeUtil.AllAssemblies;
             var allTypes = RuntimeUtil
                 .AllAssemblies
-                .SelectMany(assembly => assembly.ExportedTypes.Where(t => t.IsBasedOn<IOptionsAutoInject>() && !t.HasAttribute<IgnoreOptionInjectionAttribute>() && t.IsClass && !t.IsAbstract))
+                .SelectMany(assembly => assembly.ExportedTypes.Where(t => t.IsBasedOn<IOptionsConfigure>() && t.IsClass && !t.IsAbstract))
                 .ToArray();
 
             services.ConfigureOptions(configuration, allTypes);
 
-            OptionsProvider.Load(configuration);
+            OptionsContainer.Load(configuration);
 
             return services;
         }

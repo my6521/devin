@@ -20,7 +20,7 @@ namespace Microsoft.AspNetCore.Builder
         /// <exception cref="ArgumentNullException"></exception>
         public static IApplicationBuilder UseHangfireSetup(this IApplicationBuilder app)
         {
-            var setting = app.ApplicationServices.GetService<HangfireConfig>();
+            var setting = app.ApplicationServices.GetService<HangfireOptions>();
             if (setting == null) throw new ArgumentNullException(nameof(setting));
 
             //启动Hangfire面板

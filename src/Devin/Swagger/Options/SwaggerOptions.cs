@@ -1,11 +1,10 @@
-﻿using Devin.Options.Attributes;
+﻿using Devin.Options;
 using Devin.Swagger.Internal;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Devin.Swagger.Options
 {
-    [IgnoreOptionInjection]
-    public class SwaggerOptions
+    public class SwaggerOptions : IOptionsInit
     {
         public string DocumentTitle { get; set; }
         public DocExpansion DocExpansionState { get; set; }

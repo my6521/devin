@@ -1,8 +1,5 @@
-﻿using Devin.Options.Attributes;
-
-namespace Devin.ResponseWrapper.Options
+﻿namespace Devin.ResponseWrapper.Options
 {
-    [IgnoreOptionInjection]
     public class ResponseWrapperOptions
     {
         public IApiResult ResponseWrapper { get; set; } = new ApiResult();
